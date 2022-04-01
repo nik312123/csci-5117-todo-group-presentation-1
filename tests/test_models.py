@@ -24,6 +24,23 @@ correct_task_with_no_middle_name_with_field = {
     "isCompleted": False
 }
 
+correct_task_with_no_middle_name_without_field = {
+    "id": 1,
+    "title": "Hello Goodbye 7 l33t",
+    "description": "This task is obviously about hello goodbye 7 l33t. What more do you need?",
+    "dueDatetime": datetime(2022, 3, 31, 11, 32, 10),
+    "user": {
+        "email": "chawl025@umn.edu",
+        "firstName": "Nikunj",
+        "hasMiddleName": False,
+        "lastName": "Chawla",
+        "profileUrl": "https://github.com/nik312123"
+    },
+    "color": "#0197F6",
+    "priority": "low",
+    "isCompleted": False
+}
+
 
 def assert_model_dicts_equal(task_dict: dict, expected_dict: dict) -> None:
     assert task_dict["id"] == expected_dict["id"]
@@ -44,6 +61,11 @@ def assert_model_dicts_equal(task_dict: dict, expected_dict: dict) -> None:
     assert task_dict["isCompleted"] == expected_dict["isCompleted"]
 
 
+def convert_to_p3_expected_dict(expected_dict: dict) -> None:
+    expected_dict["color"] = Color(expected_dict["color"])
+    expected_dict["user"].pop("hasMiddleName")
+
+
 def test_correct_task_with_no_middle_name_with_field_p1() -> None:
     task = p1_task_model.TaskModel(**correct_task_with_no_middle_name_with_field)
     assert_model_dicts_equal(task.dict(by_alias = True), correct_task_with_no_middle_name_with_field)
@@ -56,8 +78,31 @@ def test_correct_task_with_no_middle_name_with_field_p2() -> None:
 
 def test_correct_task_with_no_middle_name_with_field_p3() -> None:
     task = p3_task_model.TaskModel(**correct_task_with_no_middle_name_with_field)
-    updated_dict = correct_task_with_no_middle_name_with_field.copy()
+    expected_dict = correct_task_with_no_middle_name_with_field.copy()
+    convert_to_p3_expected_dict(expected_dict)
+    assert_model_dicts_equal(task.dict(by_alias = True), expected_dict)
+
+
+def test_correct_task_with_no_middle_name_without_field_p1() -> None:
+    task = p1_task_model.TaskModel(**correct_task_with_no_middle_name_without_field)
+    expected_dict = correct_task_with_no_middle_name_without_field.copy()
     # noinspection PyTypeChecker
-    updated_dict["color"] = Color(updated_dict["color"])
-    updated_dict["user"].pop("hasMiddleName")
-    assert_model_dicts_equal(task.dict(by_alias = True), updated_dict)
+    expected_dict["user"]["middleName"] = None
+    assert_model_dicts_equal(task.dict(by_alias = True), correct_task_with_no_middle_name_without_field)
+
+
+def test_correct_task_with_no_middle_name_without_field_p2() -> None:
+    task = p2_task_model.TaskModel(**correct_task_with_no_middle_name_without_field)
+    expected_dict = correct_task_with_no_middle_name_without_field.copy()
+    # noinspection PyTypeChecker
+    expected_dict["user"]["middleName"] = None
+    assert_model_dicts_equal(task.dict(by_alias = True), correct_task_with_no_middle_name_without_field)
+
+
+def test_correct_task_with_no_middle_name_without_field_p3() -> None:
+    task = p3_task_model.TaskModel(**correct_task_with_no_middle_name_without_field)
+    expected_dict = correct_task_with_no_middle_name_without_field.copy()
+    # noinspection PyTypeChecker
+    expected_dict["user"]["middleName"] = None
+    convert_to_p3_expected_dict(expected_dict)
+    assert_model_dicts_equal(task.dict(by_alias = True), expected_dict)
