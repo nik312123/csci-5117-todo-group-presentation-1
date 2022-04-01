@@ -17,6 +17,7 @@ uplink = "*"
 werkzeug = "*"
 google-cloud-storage = "*"
 firebase-admin = "*"
+pytest = "*"
 
 [dev-packages]
 
