@@ -12,7 +12,7 @@ class UserModel(BaseModel):
     last_name: StrictStr = Field(alias = "lastName")
     profile_url: HttpUrl = Field(alias = "profileUrl")
     
-    _name_format_regex = re.compile(r"^[a-zA-Z]+$")
+    _name_format_regex = re.compile(r"^[a-zA-Z]*$")
     
     @validator("email", "first_name", "middle_name", "last_name", "profile_url")
     def strip_spaces(cls, string: Optional[str]) -> Optional[str]:
