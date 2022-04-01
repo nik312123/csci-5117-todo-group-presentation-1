@@ -1,5 +1,7 @@
 from datetime import datetime
 
+import pytest
+from pydantic import ValidationError
 from pydantic.color import Color
 
 from p1_siyad_final import task_model as p1_task_model
@@ -41,6 +43,7 @@ correct_task_with_no_middle_name_without_field = {
     "isCompleted": False
 }
 
+# noinspection SpellCheckingInspection
 correct_task_with_middle_name = {
     "id": 1,
     "title": "Hello Goodbye 7 l33t",
@@ -51,6 +54,132 @@ correct_task_with_middle_name = {
         "firstName": "Nikunj",
         "hasMiddleName": True,
         "middleName": "Chanik",
+        "lastName": "Chawla",
+        "profileUrl": "https://github.com/nik312123"
+    },
+    "color": "#0197F6",
+    "priority": "low",
+    "isCompleted": False
+}
+
+incorrect_task_with_negative_id = {
+    "id": -1,
+    "title": "Hello Goodbye 7 l33t",
+    "description": "This task is obviously about hello goodbye 7 l33t. What more do you need?",
+    "dueDatetime": datetime(2022, 3, 31, 11, 32, 10),
+    "user": {
+        "email": "chawl025@umn.edu",
+        "firstName": "Nikunj",
+        "hasMiddleName": False,
+        "middleName": None,
+        "lastName": "Chawla",
+        "profileUrl": "https://github.com/nik312123"
+    },
+    "color": "#0197F6",
+    "priority": "low",
+    "isCompleted": False
+}
+
+incorrect_task_with_zero_id = {
+    "id": 0,
+    "title": "Hello Goodbye 7 l33t",
+    "description": "This task is obviously about hello goodbye 7 l33t. What more do you need?",
+    "dueDatetime": datetime(2022, 3, 31, 11, 32, 10),
+    "user": {
+        "email": "chawl025@umn.edu",
+        "firstName": "Nikunj",
+        "hasMiddleName": False,
+        "middleName": None,
+        "lastName": "Chawla",
+        "profileUrl": "https://github.com/nik312123"
+    },
+    "color": "#0197F6",
+    "priority": "low",
+    "isCompleted": False
+}
+
+incorrect_task_with_incorrectly_typed_id = {
+    "id": True,
+    "title": "Hello Goodbye 7 l33t",
+    "description": "This task is obviously about hello goodbye 7 l33t. What more do you need?",
+    "dueDatetime": datetime(2022, 3, 31, 11, 32, 10),
+    "user": {
+        "email": "chawl025@umn.edu",
+        "firstName": "Nikunj",
+        "hasMiddleName": False,
+        "middleName": None,
+        "lastName": "Chawla",
+        "profileUrl": "https://github.com/nik312123"
+    },
+    "color": "#0197F6",
+    "priority": "low",
+    "isCompleted": False
+}
+
+incorrect_task_with_empty_title = {
+    "id": 0,
+    "title": "",
+    "description": "This task is obviously about hello goodbye 7 l33t. What more do you need?",
+    "dueDatetime": datetime(2022, 3, 31, 11, 32, 10),
+    "user": {
+        "email": "chawl025@umn.edu",
+        "firstName": "Nikunj",
+        "hasMiddleName": False,
+        "middleName": None,
+        "lastName": "Chawla",
+        "profileUrl": "https://github.com/nik312123"
+    },
+    "color": "#0197F6",
+    "priority": "low",
+    "isCompleted": False
+}
+
+incorrect_task_with_too_long_title = {
+    "id": 0,
+    "title": "Anna ate an apple and applauded",
+    "description": "This task is obviously about hello goodbye 7 l33t. What more do you need?",
+    "dueDatetime": datetime(2022, 3, 31, 11, 32, 10),
+    "user": {
+        "email": "chawl025@umn.edu",
+        "firstName": "Nikunj",
+        "hasMiddleName": False,
+        "middleName": None,
+        "lastName": "Chawla",
+        "profileUrl": "https://github.com/nik312123"
+    },
+    "color": "#0197F6",
+    "priority": "low",
+    "isCompleted": False
+}
+
+incorrect_task_with_malformatted_title = {
+    "id": 0,
+    "title": "Hello. Goodbye 7 l33t",
+    "description": "This task is obviously about hello goodbye 7 l33t. What more do you need?",
+    "dueDatetime": datetime(2022, 3, 31, 11, 32, 10),
+    "user": {
+        "email": "chawl025@umn.edu",
+        "firstName": "Nikunj",
+        "hasMiddleName": False,
+        "middleName": None,
+        "lastName": "Chawla",
+        "profileUrl": "https://github.com/nik312123"
+    },
+    "color": "#0197F6",
+    "priority": "low",
+    "isCompleted": False
+}
+
+incorrect_task_with_incorrectly_typed_title = {
+    "id": 0,
+    "title": 9,
+    "description": "This task is obviously about hello goodbye 7 l33t. What more do you need?",
+    "dueDatetime": datetime(2022, 3, 31, 11, 32, 10),
+    "user": {
+        "email": "chawl025@umn.edu",
+        "firstName": "Nikunj",
+        "hasMiddleName": False,
+        "middleName": None,
         "lastName": "Chawla",
         "profileUrl": "https://github.com/nik312123"
     },
@@ -141,3 +270,106 @@ def test_correct_task_with_middle_name_p3() -> None:
     expected_dict = correct_task_with_middle_name.copy()
     convert_to_p3_expected_dict(expected_dict)
     assert_model_dicts_equal(task.dict(by_alias = True), expected_dict)
+
+
+def test_incorrect_task_with_negative_id_p1() -> None:
+    with pytest.raises(ValidationError):
+        p1_task_model.TaskModel(**incorrect_task_with_negative_id)
+
+
+def test_incorrect_task_with_negative_id_p2() -> None:
+    with pytest.raises(ValidationError):
+        p2_task_model.TaskModel(**incorrect_task_with_negative_id)
+
+
+def test_incorrect_task_with_negative_id_p3() -> None:
+    with pytest.raises(ValidationError):
+        p3_task_model.TaskModel(**incorrect_task_with_negative_id)
+
+
+def test_incorrect_task_with_zero_id_p1() -> None:
+    with pytest.raises(ValidationError):
+        p1_task_model.TaskModel(**incorrect_task_with_zero_id)
+
+
+def test_incorrect_task_with_zero_id_p2() -> None:
+    with pytest.raises(ValidationError):
+        p2_task_model.TaskModel(**incorrect_task_with_zero_id)
+
+
+def test_incorrect_task_with_zero_id_p3() -> None:
+    with pytest.raises(ValidationError):
+        p3_task_model.TaskModel(**incorrect_task_with_zero_id)
+
+
+# No such typed test exists for p1 as strict typing is not introduced
+
+
+def test_incorrect_task_with_incorrectly_typed_id_p2() -> None:
+    with pytest.raises(ValidationError):
+        p2_task_model.TaskModel(**incorrect_task_with_incorrectly_typed_id)
+
+
+def test_incorrect_task_with_incorrectly_typed_id_p3() -> None:
+    with pytest.raises(ValidationError):
+        p3_task_model.TaskModel(**incorrect_task_with_incorrectly_typed_id)
+
+
+def test_incorrect_task_with_empty_title_p1() -> None:
+    with pytest.raises(ValidationError):
+        p1_task_model.TaskModel(**incorrect_task_with_empty_title)
+
+
+def test_incorrect_task_with_empty_title_p2() -> None:
+    with pytest.raises(ValidationError):
+        p2_task_model.TaskModel(**incorrect_task_with_empty_title)
+
+
+def test_incorrect_task_with_empty_title_p3() -> None:
+    with pytest.raises(ValidationError):
+        p3_task_model.TaskModel(**incorrect_task_with_empty_title)
+
+
+def test_incorrect_task_with_too_long_title_p1() -> None:
+    with pytest.raises(ValidationError):
+        p1_task_model.TaskModel(**incorrect_task_with_too_long_title)
+
+
+def test_incorrect_task_with_too_long_title_p2() -> None:
+    with pytest.raises(ValidationError):
+        p2_task_model.TaskModel(**incorrect_task_with_too_long_title)
+
+
+def test_incorrect_task_with_too_long_title_p3() -> None:
+    with pytest.raises(ValidationError):
+        p3_task_model.TaskModel(**incorrect_task_with_too_long_title)
+
+
+def test_incorrect_task_with_malformatted_title_p1() -> None:
+    with pytest.raises(ValidationError):
+        p1_task_model.TaskModel(**incorrect_task_with_malformatted_title)
+
+
+def test_incorrect_task_with_malformatted_title_p2() -> None:
+    with pytest.raises(ValidationError):
+        p2_task_model.TaskModel(**incorrect_task_with_malformatted_title)
+
+
+def test_incorrect_task_with_malformatted_title_p3() -> None:
+    with pytest.raises(ValidationError):
+        p3_task_model.TaskModel(**incorrect_task_with_malformatted_title)
+
+
+def test_incorrect_task_with_incorrectly_typed_title_p1() -> None:
+    with pytest.raises(ValidationError):
+        p1_task_model.TaskModel(**incorrect_task_with_incorrectly_typed_title)
+
+
+def test_incorrect_task_with_incorrectly_typed_title_p2() -> None:
+    with pytest.raises(ValidationError):
+        p2_task_model.TaskModel(**incorrect_task_with_incorrectly_typed_title)
+
+
+def test_incorrect_task_with_incorrectly_typed_title_p3() -> None:
+    with pytest.raises(ValidationError):
+        p3_task_model.TaskModel(**incorrect_task_with_incorrectly_typed_title)
