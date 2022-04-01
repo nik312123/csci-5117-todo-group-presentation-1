@@ -5,7 +5,7 @@ Aaron, make sure to have strip_whitespace = True initially for both the title an
 from datetime import datetime
 from typing import Literal
 
-from pydantic import BaseModel, constr, PositiveInt
+from pydantic import BaseModel, constr, PositiveInt, validator
 from pydantic.color import Color
 
 from p3_aaron_final.user_model import UserModel
