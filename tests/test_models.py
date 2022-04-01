@@ -636,6 +636,40 @@ incorrect_task_with_incorrectly_typed_color = {
     "isCompleted": False
 }
 
+incorrect_task_with_malformed_priority = {
+    "id": 1,
+    "title": "Hello Goodbye 7 l33t",
+    "description": "This task is obviously about hello goodbye 7 l33t. What more do you need?",
+    "dueDatetime": datetime(2022, 3, 31, 11, 32, 10),
+    "user": {
+        "email": "chawl025@umn.edu",
+        "firstName": "Nikunj",
+        "hasMiddleName": False,
+        "lastName": "Chawla",
+        "profileUrl": "https://github.com/nik312123"
+    },
+    "color": "#0197F6",
+    "priority": "small",
+    "isCompleted": False
+}
+
+incorrect_task_with_incorrectly_typed_priority = {
+    "id": 1,
+    "title": "Hello Goodbye 7 l33t",
+    "description": "This task is obviously about hello goodbye 7 l33t. What more do you need?",
+    "dueDatetime": datetime(2022, 3, 31, 11, 32, 10),
+    "user": {
+        "email": "chawl025@umn.edu",
+        "firstName": "Nikunj",
+        "hasMiddleName": False,
+        "lastName": "Chawla",
+        "profileUrl": "https://github.com/nik312123"
+    },
+    "color": "#0197F6",
+    "priority": 1,
+    "isCompleted": False
+}
+
 
 def assert_model_dicts_equal(task_dict: dict, expected_dict: dict) -> None:
     assert task_dict["id"] == expected_dict["id"]
@@ -1283,4 +1317,46 @@ def test_incorrect_task_with_incorrectly_typed_color_p3() -> None:
     check_incorrect_task_one_error(
         P3TaskModel, incorrect_task_with_malformatted_color_all,
         "value is not a valid color: string not recognised as a valid color"
+    )
+
+
+def test_incorrect_task_with_malformed_priority_p1() -> None:
+    check_incorrect_task_one_error(
+        P1TaskModel, incorrect_task_with_malformed_priority,
+        "unexpected value; permitted: 'low', 'medium', 'high'"
+    )
+
+
+def test_incorrect_task_with_malformed_priority_p2() -> None:
+    check_incorrect_task_one_error(
+        P2TaskModel, incorrect_task_with_malformed_priority,
+        "unexpected value; permitted: 'low', 'medium', 'high'"
+    )
+
+
+def test_incorrect_task_with_malformed_priority_p3() -> None:
+    check_incorrect_task_one_error(
+        P3TaskModel, incorrect_task_with_malformed_priority,
+        "unexpected value; permitted: 'low', 'medium', 'high'"
+    )
+
+
+def test_incorrect_task_with_incorrectly_typed_priority_p1() -> None:
+    check_incorrect_task_one_error(
+        P1TaskModel, incorrect_task_with_incorrectly_typed_priority,
+        "unexpected value; permitted: 'low', 'medium', 'high'"
+    )
+
+
+def test_incorrect_task_with_incorrectly_typed_priority_p2() -> None:
+    check_incorrect_task_one_error(
+        P2TaskModel, incorrect_task_with_incorrectly_typed_priority,
+        "unexpected value; permitted: 'low', 'medium', 'high'"
+    )
+
+
+def test_incorrect_task_with_incorrectly_typed_priority_p3() -> None:
+    check_incorrect_task_one_error(
+        P3TaskModel, incorrect_task_with_incorrectly_typed_priority,
+        "unexpected value; permitted: 'low', 'medium', 'high'"
     )
