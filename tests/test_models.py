@@ -190,6 +190,77 @@ incorrect_task_with_incorrectly_typed_title = {
     "isCompleted": False
 }
 
+incorrect_task_with_too_long_description = {
+    "id": 1,
+    "title": "Hello Goodbye 7 l33t",
+    "description": "a" * 201,
+    "dueDatetime": datetime(2022, 3, 31, 11, 32, 10),
+    "user": {
+        "email": "chawl025@umn.edu",
+        "firstName": "Nikunj",
+        "hasMiddleName": False,
+        "middleName": None,
+        "lastName": "Chawla",
+        "profileUrl": "https://github.com/nik312123"
+    },
+    "color": "#0197F6",
+    "priority": "low",
+    "isCompleted": False
+}
+
+incorrect_task_with_incorrectly_typed_description = {
+    "id": 1,
+    "title": "Hello Goodbye 7 l33t",
+    "description": 7,
+    "dueDatetime": datetime(2022, 3, 31, 11, 32, 10),
+    "user": {
+        "email": "chawl025@umn.edu",
+        "firstName": "Nikunj",
+        "hasMiddleName": False,
+        "middleName": None,
+        "lastName": "Chawla",
+        "profileUrl": "https://github.com/nik312123"
+    },
+    "color": "#0197F6",
+    "priority": "low",
+    "isCompleted": False
+}
+
+correct_task_with_valid_datetime_string = {
+    "id": 1,
+    "title": "Hello Goodbye 7 l33t",
+    "description": "This task is obviously about hello goodbye 7 l33t. What more do you need?",
+    "dueDatetime": "2022-03-31 11:59:59",
+    "user": {
+        "email": "chawl025@umn.edu",
+        "firstName": "Nikunj",
+        "hasMiddleName": False,
+        "middleName": None,
+        "lastName": "Chawla",
+        "profileUrl": "https://github.com/nik312123"
+    },
+    "color": "#0197F6",
+    "priority": "low",
+    "isCompleted": False
+}
+
+incorrect_task_with_unsupported_datetime_string = {
+    "id": 1,
+    "title": "Hello Goodbye 7 l33t",
+    "description": "This task is obviously about hello goodbye 7 l33t. What more do you need?",
+    "dueDatetime": "2022/03/31 11:59:59",
+    "user": {
+        "email": "chawl025@umn.edu",
+        "firstName": "Nikunj",
+        "hasMiddleName": False,
+        "middleName": None,
+        "lastName": "Chawla",
+        "profileUrl": "https://github.com/nik312123"
+    },
+    "color": "#0197F6",
+    "priority": "low",
+    "isCompleted": False
+}
 
 def assert_model_dicts_equal(task_dict: dict, expected_dict: dict) -> None:
     assert task_dict["id"] == expected_dict["id"]
@@ -397,3 +468,75 @@ def test_incorrect_task_with_incorrectly_typed_title_p2() -> None:
 
 def test_incorrect_task_with_incorrectly_typed_title_p3() -> None:
     check_incorrect_task_one_error(P3TaskModel, incorrect_task_with_incorrectly_typed_title, "str type expected")
+
+
+def test_incorrect_task_with_too_long_description_p1() -> None:
+    check_incorrect_task_one_error(
+        P1TaskModel, incorrect_task_with_too_long_description, "The description must be at most 200 characters."
+    )
+
+
+def test_incorrect_task_with_too_long_description_p2() -> None:
+    check_incorrect_task_one_error(
+        P2TaskModel, incorrect_task_with_too_long_description, "The description must be at most 200 characters."
+    )
+
+
+def test_incorrect_task_with_too_long_description_p3() -> None:
+    check_incorrect_task_one_error(
+        P3TaskModel, incorrect_task_with_too_long_description, "ensure this value has at most 200 characters"
+    )
+
+
+# No such typed test exists for p1 as strict typing is not introduced
+
+def test_incorrect_task_with_incorrectly_typed_description_p2() -> None:
+    check_incorrect_task_one_error(P2TaskModel, incorrect_task_with_incorrectly_typed_description, "str type expected")
+
+
+def test_incorrect_task_with_incorrectly_typed_description_p3() -> None:
+    check_incorrect_task_one_error(P3TaskModel, incorrect_task_with_incorrectly_typed_description, "str type expected")
+
+
+def test_correct_task_with_valid_datetime_string_p1() -> None:
+    task = P1TaskModel(**correct_task_with_valid_datetime_string)
+    expected_dict = deepcopy(correct_task_with_valid_datetime_string)
+    # noinspection PyTypedDict
+    expected_dict["dueDatetime"] = datetime.fromisoformat(expected_dict["dueDatetime"])
+    assert_model_dicts_equal(task.dict(by_alias = True), expected_dict)
+
+
+def test_correct_task_with_valid_datetime_string_p2() -> None:
+    task = P2TaskModel(**correct_task_with_valid_datetime_string)
+    expected_dict = deepcopy(correct_task_with_valid_datetime_string)
+    # noinspection PyTypedDict
+    expected_dict["dueDatetime"] = datetime.fromisoformat(expected_dict["dueDatetime"])
+    convert_to_p2_expected_dict(expected_dict)
+    assert_model_dicts_equal(task.dict(by_alias = True), expected_dict)
+
+
+def test_correct_task_with_valid_datetime_string_p3() -> None:
+    task = P3TaskModel(**correct_task_with_valid_datetime_string)
+    expected_dict = deepcopy(correct_task_with_valid_datetime_string)
+    # noinspection PyTypedDict
+    expected_dict["dueDatetime"] = datetime.fromisoformat(expected_dict["dueDatetime"])
+    convert_to_p3_expected_dict(expected_dict)
+    assert_model_dicts_equal(task.dict(by_alias = True), expected_dict)
+
+
+def test_incorrect_task_with_unsupported_datetime_string_p1() -> None:
+    check_incorrect_task_one_error(
+        P1TaskModel, incorrect_task_with_unsupported_datetime_string, "invalid datetime format"
+    )
+
+
+def test_incorrect_task_with_unsupported_datetime_string_p2() -> None:
+    check_incorrect_task_one_error(
+        P2TaskModel, incorrect_task_with_unsupported_datetime_string, "invalid datetime format"
+    )
+
+
+def test_incorrect_task_with_unsupported_datetime_string_p3() -> None:
+    check_incorrect_task_one_error(
+        P3TaskModel, incorrect_task_with_unsupported_datetime_string, "invalid datetime format"
+    )
