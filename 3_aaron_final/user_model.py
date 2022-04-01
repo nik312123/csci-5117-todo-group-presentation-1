@@ -17,7 +17,7 @@ class UserModel(BaseModel):
     has_middle_name: bool
     middle_name: Optional[str]
     last_name: str
-    profile_url: Optional[HttpUrl] = Field(min_length = 13, max_length = 512)
+    profile_url: HttpUrl = Field(min_length = 13, max_length = 512)
     
     _name_format_regex = re.compile(r"^[a-zA-Z]$")
     

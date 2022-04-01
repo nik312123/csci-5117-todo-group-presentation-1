@@ -5,7 +5,7 @@ CREATE TABLE usr (
     first_name  VARCHAR(30)  NOT NULL,
     middle_name VARCHAR(30)  NULL,
     last_name   VARCHAR(30)  NOT NULL,
-    profile_url VARCHAR(512) NULL
+    profile_url VARCHAR(512) NOT NULL
 );
 
 CREATE TABLE task (
