@@ -1,3 +1,4 @@
+import re
 from typing import Optional
 
 from pydantic import BaseModel, EmailStr, HttpUrl, validator, constr
@@ -10,6 +11,8 @@ class UserModel(BaseModel):
     middle_name: Optional[constr(min_length = 1, max_length = 30)]
     last_name: constr(min_length = 1, max_length = 30)
     profile_url: Optional[HttpUrl]
+    
+    _name_format_regex = re.compile(r"^[a-zA-Z]$")
     
     @validator("email", "first_name", "middle_name", "last_name", "profile_url")
     def strip_spaces(cls, string: str) -> str:
@@ -24,8 +27,10 @@ class UserModel(BaseModel):
         return middle_name
     
     @validator("first_name", "middle_name", "last_name")
-    def replace_spaces_in_name_part_with_underscores(cls, name_part: str) -> str:
-        return name_part.replace(" ", "_")
+    def check_name_part_format(cls, name_part: str) -> str:
+        if not cls._name_format_regex.match(name_part):
+            raise ValueError("A name part may only consist of alphabetical characters")
+        return name_part.capitalize()
     
     @validator("profile_url")
     def check_if_profile_url_length_is_valid(cls, profile_url: Optional[HttpUrl]) -> Optional[HttpUrl]:

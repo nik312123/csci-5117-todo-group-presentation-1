@@ -3,6 +3,7 @@ Aaron, don't forget to start with constr implementation before using min_anystr_
 Aaron, make sure to have strip_whitespace = True initially for the name parts before going into config.
 """
 
+import re
 from typing import Optional
 
 from pydantic import BaseModel, EmailStr, HttpUrl, validator
@@ -17,6 +18,8 @@ class UserModel(BaseModel):
     middle_name: Optional[str]
     last_name: str
     profile_url: Optional[HttpUrl]
+    
+    _name_format_regex = re.compile(r"^[a-zA-Z]$")
     
     class Config:
         anystr_strip_whitespace = True
@@ -39,8 +42,10 @@ class UserModel(BaseModel):
         return middle_name
     
     @validator("first_name", "middle_name", "last_name")
-    def replace_spaces_in_name_part_with_underscores(cls, name_part: str) -> str:
-        return name_part.replace(" ", "_")
+    def check_name_part_format(cls, name_part: str) -> str:
+        if not cls._name_format_regex.match(name_part):
+            raise ValueError("A name part may only consist of alphabetical characters")
+        return name_part.capitalize()
     
     @validator("profile_url")
     def check_if_profile_url_length_is_valid(cls, profile_url: Optional[HttpUrl]) -> Optional[HttpUrl]:
