@@ -18,8 +18,9 @@ class UserModel(BaseModel):
     _name_format_regex = re.compile(r"^[a-zA-Z]+$")
     
     @validator("email", "first_name", "middle_name", "last_name", "profile_url")
-    def strip_spaces(cls, string: str) -> str:
-        return string.strip()
+    def strip_spaces(cls, string: Optional[str]) -> Optional[str]:
+        if string is not None:
+            return string.strip()
     
     @validator("email")
     def check_email_format(cls, email: str) -> str:
