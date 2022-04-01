@@ -24,7 +24,7 @@ class UserModel(BaseModel):
         if values["has_middle_name"] and middle_name is None:
             raise ValueError("Checkbox picked for middle name but not middle name provided.")
         elif not values["has_middle_name"] and middle_name is not None:
-            raise ValueError("Checkbox not picked for middle name but middle name provided")
+            raise ValueError("Checkbox not picked for middle name but middle name provided.")
         return middle_name
     
     @validator("first_name", "middle_name", "last_name")
@@ -42,14 +42,14 @@ class UserModel(BaseModel):
         if name_part is None:
             return name_part
         if not cls._name_format_regex.match(name_part):
-            raise ValueError("A name part may only consist of alphabetical characters")
+            raise ValueError("A name part may only consist of alphabetical characters.")
         return name_part.capitalize()
     
     @validator("profile_url")
     def check_profile_url_length(cls, profile_url: HttpUrl) -> HttpUrl:
         profile_url_len = len(profile_url)
         if profile_url_len < 13 or profile_url_len > 512:
-            raise ValueError("The profile URL length must be between 13 to 512 characters in length")
+            raise ValueError("The profile URL length must be between 13 to 512 characters in length.")
         return profile_url
     
     @validator("profile_url")

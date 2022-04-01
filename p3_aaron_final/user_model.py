@@ -41,7 +41,7 @@ class UserModel(BaseModel):
         if name_part is None:
             return name_part
         if not cls._name_format_regex.match(name_part):
-            raise ValueError("A name part may only consist of alphabetical characters")
+            raise ValueError("A name part may only consist of alphabetical characters.")
         return name_part.capitalize()
     
     @validator("profile_url")
