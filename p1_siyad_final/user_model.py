@@ -36,8 +36,8 @@ class UserModel(BaseModel):
             return name_part
         
         name_part_len = len(name_part)
-        if name_part_len < 0 or name_part_len > 30:
-            raise ValueError("A name part must be between 1 and 30 characters in length")
+        if name_part_len < 1 or name_part_len > 30:
+            raise ValueError("A name part must be between 1 and 30 characters in length.")
         return name_part
     
     @validator("first_name", "middle_name", "last_name")
