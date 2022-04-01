@@ -2,7 +2,7 @@ import re
 from datetime import datetime
 from typing import Literal
 
-from pydantic import BaseModel, validator
+from pydantic import BaseModel, validator, Field
 
 from user_model import UserModel
 
@@ -11,11 +11,11 @@ class TaskModel(BaseModel):
     id: int
     title: str
     description: str
-    due_datetime: datetime
+    due_datetime: datetime = Field(alias = "dueDatetime")
     user: UserModel
     color: str
     priority: Literal["low", "medium", "high"]
-    is_completed: bool = False
+    is_completed: bool = Field(False, alias = "isCompleted")
     
     # Underscores prevent fields from being part of the schema parsed by pydantic
     _title_format_regex = re.compile(r"^[a-zA-Z0-9 ]+$")
