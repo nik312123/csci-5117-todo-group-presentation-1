@@ -4,7 +4,7 @@ from typing import Optional
 from email_validator import validate_email, EmailNotValidError
 from pydantic import BaseModel, validator, Field
 
-from util import valid_url
+from p1_siyad_final.util import valid_url
 
 
 class UserModel(BaseModel):

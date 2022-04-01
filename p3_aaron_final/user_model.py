@@ -8,7 +8,7 @@ from typing import Optional
 
 from pydantic import BaseModel, EmailStr, HttpUrl, validator, Field
 
-from util import snake_case_to_camel_case
+from p3_aaron_final.util import snake_case_to_camel_case
 
 
 class UserModel(BaseModel):

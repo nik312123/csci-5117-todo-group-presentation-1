@@ -4,7 +4,7 @@ from typing import Literal
 
 from pydantic import BaseModel, validator, Field, PositiveInt
 
-from user_model import UserModel
+from p2_sumukh_final.user_model import UserModel
 
 
 class TaskModel(BaseModel):
