@@ -1,22 +1,33 @@
 import re
 from typing import Optional
 
-from pydantic import BaseModel, EmailStr, HttpUrl, validator, Field
+from email_validator import validate_email, EmailNotValidError
+from pydantic import BaseModel, validator, Field
+
+from util import valid_url
 
 
 class UserModel(BaseModel):
-    email: EmailStr
+    email: str
     first_name: str = Field(alias = "firstName")
     has_middle_name: bool = Field(alias = "hasMiddleName")
     middle_name: Optional[str] = Field(alias = "middleName")
     last_name: str = Field(alias = "lastName")
-    profile_url: HttpUrl = Field(alias = "profileUrl")
+    profile_url: str = Field(alias = "profileUrl")
     
     _name_format_regex = re.compile(r"^[a-zA-Z]$")
     
     @validator("email", "first_name", "middle_name", "last_name", "profile_url")
     def strip_spaces(cls, string: str) -> str:
         return string.strip()
+    
+    @validator("email")
+    def check_email_format(cls, email: str) -> str:
+        try:
+            validate_email(email, check_deliverability = False)
+            return email
+        except EmailNotValidError:
+            raise ValueError("The provided email must be in an acceptable format.")
     
     @validator("middle_name")
     def check_if_middle_name_should_be_included(cls, middle_name: Optional[str], values) -> Optional[str]:
@@ -49,4 +60,10 @@ class UserModel(BaseModel):
         profile_url_len = len(profile_url)
         if profile_url_len < 13 or profile_url_len > 512:
             raise ValueError("The profile URL length must be between 13 to 512 characters in length")
+        return profile_url
+    
+    @validator("profile_url")
+    def check_profile_url_format(cls, profile_url: str) -> str:
+        if not valid_url(profile_url):
+            raise ValueError("The profile URL must be a valid URL")
         return profile_url
