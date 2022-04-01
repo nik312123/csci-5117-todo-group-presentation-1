@@ -6,17 +6,17 @@ Aaron, make sure to have strip_whitespace = True initially for the name parts be
 import re
 from typing import Optional
 
-from pydantic import BaseModel, EmailStr, HttpUrl, validator
+from pydantic import BaseModel, EmailStr, HttpUrl, validator, StrictStr, StrictBool
 
 from p3_aaron_final.util import snake_case_to_camel_case
 
 
 class UserModel(BaseModel):
     email: EmailStr
-    first_name: str
-    has_middle_name: bool
-    middle_name: Optional[str]
-    last_name: str
+    first_name: StrictStr
+    has_middle_name: StrictBool
+    middle_name: Optional[StrictStr]
+    last_name: StrictStr
     profile_url: HttpUrl
     
     _name_format_regex = re.compile(r"^[a-zA-Z]+$")

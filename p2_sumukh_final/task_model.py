@@ -2,24 +2,30 @@ import re
 from datetime import datetime
 from typing import Literal
 
-from pydantic import BaseModel, validator, Field, PositiveInt
+from pydantic import BaseModel, validator, Field, StrictInt, StrictStr, StrictBool
 
 from p2_sumukh_final.user_model import UserModel
 
 
 class TaskModel(BaseModel):
-    id: PositiveInt
-    title: str
-    description: str
+    id: StrictInt
+    title: StrictStr
+    description: StrictStr
     due_datetime: datetime = Field(alias = "dueDatetime")
     user: UserModel
-    color: str
+    color: StrictStr
     priority: Literal["low", "medium", "high"]
-    is_completed: bool = Field(False, alias = "isCompleted")
+    is_completed: StrictBool = Field(False, alias = "isCompleted")
     
     # Underscores prevent fields from being part of the schema parsed by pydantic
     _title_format_regex = re.compile(r"^[a-zA-Z0-9 ]+$")
     _color_format_regex = re.compile("^#[a-fA-F0-9]{6}$")
+    
+    @validator("id")
+    def check_id_is_positive(cls, task_id: int) -> int:
+        if task_id <= 0:
+            raise ValueError("The id must be positive.")
+        return task_id
     
     @validator("title", "description")
     def strip_spaces(cls, string: str) -> str:
