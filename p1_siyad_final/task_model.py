@@ -54,5 +54,5 @@ class TaskModel(BaseModel):
     @validator("color")
     def check_color_format(cls, color: str) -> str:
         if not cls._color_format_regex.match(color):
-            raise ValueError("The color should be a color hexadecimal string of length 6")
+            raise ValueError("The color should be a valid color hexadecimal string of length 7.")
         return color.upper()

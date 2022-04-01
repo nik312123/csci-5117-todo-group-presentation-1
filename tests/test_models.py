@@ -585,6 +585,57 @@ incorrect_task_with_incorrectly_typed_has_middle_name = {
     "isCompleted": False
 }
 
+incorrect_task_with_malformatted_color_strict = {
+    "id": 1,
+    "title": "Hello Goodbye 7 l33t",
+    "description": "This task is obviously about hello goodbye 7 l33t. What more do you need?",
+    "dueDatetime": datetime(2022, 3, 31, 11, 32, 10),
+    "user": {
+        "email": "chawl025@umn.edu",
+        "firstName": "Nikunj",
+        "hasMiddleName": False,
+        "lastName": "Chawla",
+        "profileUrl": "https://github.com/nik312123"
+    },
+    "color": "#abc",
+    "priority": "low",
+    "isCompleted": False
+}
+
+incorrect_task_with_malformatted_color_all = {
+    "id": 1,
+    "title": "Hello Goodbye 7 l33t",
+    "description": "This task is obviously about hello goodbye 7 l33t. What more do you need?",
+    "dueDatetime": datetime(2022, 3, 31, 11, 32, 10),
+    "user": {
+        "email": "chawl025@umn.edu",
+        "firstName": "Nikunj",
+        "hasMiddleName": False,
+        "lastName": "Chawla",
+        "profileUrl": "https://github.com/nik312123"
+    },
+    "color": "TyrannosaurusRex",
+    "priority": "low",
+    "isCompleted": False
+}
+
+incorrect_task_with_incorrectly_typed_color = {
+    "id": 1,
+    "title": "Hello Goodbye 7 l33t",
+    "description": "This task is obviously about hello goodbye 7 l33t. What more do you need?",
+    "dueDatetime": datetime(2022, 3, 31, 11, 32, 10),
+    "user": {
+        "email": "chawl025@umn.edu",
+        "firstName": "Nikunj",
+        "hasMiddleName": False,
+        "lastName": "Chawla",
+        "profileUrl": "https://github.com/nik312123"
+    },
+    "color": 1234567,
+    "priority": "low",
+    "isCompleted": False
+}
+
 
 def assert_model_dicts_equal(task_dict: dict, expected_dict: dict) -> None:
     assert task_dict["id"] == expected_dict["id"]
@@ -1174,4 +1225,62 @@ def test_incorrect_task_with_incorrectly_typed_has_middle_name_p2() -> None:
 def test_incorrect_task_with_incorrectly_typed_has_middle_name_p3() -> None:
     check_incorrect_task_one_error(
         P3TaskModel, incorrect_task_with_incorrectly_typed_has_middle_name, "value is not a valid boolean"
+    )
+
+
+def test_incorrect_task_with_malformatted_color_strict_p1() -> None:
+    check_incorrect_task_one_error(
+        P1TaskModel, incorrect_task_with_malformatted_color_strict,
+        "The color should be a valid color hexadecimal string of length 7."
+    )
+
+
+def test_incorrect_task_with_malformatted_color_strict_p2() -> None:
+    check_incorrect_task_one_error(
+        P2TaskModel, incorrect_task_with_malformatted_color_strict,
+        "The color should be a valid color hexadecimal string of length 7."
+    )
+
+
+# This specific test case is not malformatted in the flexible Color class
+
+def test_incorrect_task_with_malformatted_color_all_p1() -> None:
+    check_incorrect_task_one_error(
+        P1TaskModel, incorrect_task_with_malformatted_color_all,
+        "The color should be a valid color hexadecimal string of length 7."
+    )
+
+
+def test_incorrect_task_with_malformatted_color_all_p2() -> None:
+    check_incorrect_task_one_error(
+        P2TaskModel, incorrect_task_with_malformatted_color_all,
+        "The color should be a valid color hexadecimal string of length 7."
+    )
+
+
+def test_incorrect_task_with_malformatted_color_all_p3() -> None:
+    check_incorrect_task_one_error(
+        P3TaskModel, incorrect_task_with_malformatted_color_all,
+        "value is not a valid color: string not recognised as a valid color"
+    )
+
+
+def test_incorrect_task_with_incorrectly_typed_color_p1() -> None:
+    check_incorrect_task_one_error(
+        P1TaskModel, incorrect_task_with_malformatted_color_all,
+        "The color should be a valid color hexadecimal string of length 7."
+    )
+
+
+def test_incorrect_task_with_incorrectly_typed_color_p2() -> None:
+    check_incorrect_task_one_error(
+        P2TaskModel, incorrect_task_with_malformatted_color_all,
+        "The color should be a valid color hexadecimal string of length 7."
+    )
+
+
+def test_incorrect_task_with_incorrectly_typed_color_p3() -> None:
+    check_incorrect_task_one_error(
+        P3TaskModel, incorrect_task_with_malformatted_color_all,
+        "value is not a valid color: string not recognised as a valid color"
     )
