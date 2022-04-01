@@ -19,7 +19,7 @@ class UserModel(BaseModel):
     last_name: str
     profile_url: HttpUrl
     
-    _name_format_regex = re.compile(r"^[a-zA-Z]$")
+    _name_format_regex = re.compile(r"^[a-zA-Z]+$")
     
     class Config:
         anystr_strip_whitespace = True
