@@ -1,3 +1,7 @@
+"""
+Aaron, don't forget to start with constr implementation before using min_anystr_length and max_anystr_length.
+"""
+
 from typing import Optional
 
 from pydantic import BaseModel, EmailStr, HttpUrl, validator
