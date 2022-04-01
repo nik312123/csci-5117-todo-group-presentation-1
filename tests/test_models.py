@@ -352,6 +352,222 @@ incorrect_task_with_incorrectly_typed_email = {
     "isCompleted": False
 }
 
+incorrect_task_with_empty_first_name = {
+    "id": 1,
+    "title": "Hello Goodbye 7 l33t",
+    "description": "This task is obviously about hello goodbye 7 l33t. What more do you need?",
+    "dueDatetime": datetime(2022, 3, 31, 11, 32, 10),
+    "user": {
+        "email": "chawl025@umn.edu",
+        "firstName": "",
+        "hasMiddleName": False,
+        "middleName": None,
+        "lastName": "Chawla",
+        "profileUrl": "https://github.com/nik312123"
+    },
+    "color": "#0197F6",
+    "priority": "low",
+    "isCompleted": False
+}
+
+incorrect_task_with_too_long_first_name = {
+    "id": 1,
+    "title": "Hello Goodbye 7 l33t",
+    "description": "This task is obviously about hello goodbye 7 l33t. What more do you need?",
+    "dueDatetime": datetime(2022, 3, 31, 11, 32, 10),
+    "user": {
+        "email": "chawl025@umn.edu",
+        "firstName": "NikunjNikunjNikunjNikunjNikunjNikunj",
+        "hasMiddleName": False,
+        "middleName": None,
+        "lastName": "Chawla",
+        "profileUrl": "https://github.com/nik312123"
+    },
+    "color": "#0197F6",
+    "priority": "low",
+    "isCompleted": False
+}
+
+incorrect_task_with_malformatted_first_name = {
+    "id": 1,
+    "title": "Hello Goodbye 7 l33t",
+    "description": "This task is obviously about hello goodbye 7 l33t. What more do you need?",
+    "dueDatetime": datetime(2022, 3, 31, 11, 32, 10),
+    "user": {
+        "email": "chawl025@umn.edu",
+        "firstName": "Nik'unj",
+        "hasMiddleName": False,
+        "middleName": None,
+        "lastName": "Chawla",
+        "profileUrl": "https://github.com/nik312123"
+    },
+    "color": "#0197F6",
+    "priority": "low",
+    "isCompleted": False
+}
+
+incorrect_task_with_incorrectly_typed_first_name = {
+    "id": 1,
+    "title": "Hello Goodbye 7 l33t",
+    "description": "This task is obviously about hello goodbye 7 l33t. What more do you need?",
+    "dueDatetime": datetime(2022, 3, 31, 11, 32, 10),
+    "user": {
+        "email": "chawl025@umn.edu",
+        "firstName": 987,
+        "hasMiddleName": False,
+        "middleName": None,
+        "lastName": "Chawla",
+        "profileUrl": "https://github.com/nik312123"
+    },
+    "color": "#0197F6",
+    "priority": "low",
+    "isCompleted": False
+}
+
+incorrect_task_with_empty_last_name = {
+    "id": 1,
+    "title": "Hello Goodbye 7 l33t",
+    "description": "This task is obviously about hello goodbye 7 l33t. What more do you need?",
+    "dueDatetime": datetime(2022, 3, 31, 11, 32, 10),
+    "user": {
+        "email": "chawl025@umn.edu",
+        "firstName": "Nikunj",
+        "hasMiddleName": False,
+        "middleName": None,
+        "lastName": "",
+        "profileUrl": "https://github.com/nik312123"
+    },
+    "color": "#0197F6",
+    "priority": "low",
+    "isCompleted": False
+}
+
+incorrect_task_with_too_long_last_name = {
+    "id": 1,
+    "title": "Hello Goodbye 7 l33t",
+    "description": "This task is obviously about hello goodbye 7 l33t. What more do you need?",
+    "dueDatetime": datetime(2022, 3, 31, 11, 32, 10),
+    "user": {
+        "email": "chawl025@umn.edu",
+        "firstName": "Nikunj",
+        "hasMiddleName": False,
+        "middleName": None,
+        "lastName": "ChawlaChawlaChawlaChawlaChawlaChawla",
+        "profileUrl": "https://github.com/nik312123"
+    },
+    "color": "#0197F6",
+    "priority": "low",
+    "isCompleted": False
+}
+
+incorrect_task_with_malformatted_last_name = {
+    "id": 1,
+    "title": "Hello Goodbye 7 l33t",
+    "description": "This task is obviously about hello goodbye 7 l33t. What more do you need?",
+    "dueDatetime": datetime(2022, 3, 31, 11, 32, 10),
+    "user": {
+        "email": "chawl025@umn.edu",
+        "firstName": "Nikunj",
+        "hasMiddleName": False,
+        "middleName": None,
+        "lastName": "Chawla0",
+        "profileUrl": "https://github.com/nik312123"
+    },
+    "color": "#0197F6",
+    "priority": "low",
+    "isCompleted": False
+}
+
+incorrect_task_with_incorrectly_typed_last_name = {
+    "id": 1,
+    "title": "Hello Goodbye 7 l33t",
+    "description": "This task is obviously about hello goodbye 7 l33t. What more do you need?",
+    "dueDatetime": datetime(2022, 3, 31, 11, 32, 10),
+    "user": {
+        "email": "chawl025@umn.edu",
+        "firstName": "Nikunj",
+        "hasMiddleName": False,
+        "middleName": None,
+        "lastName": False,
+        "profileUrl": "https://github.com/nik312123"
+    },
+    "color": "#0197F6",
+    "priority": "low",
+    "isCompleted": False
+}
+
+incorrect_task_with_empty_middle_name = {
+    "id": 1,
+    "title": "Hello Goodbye 7 l33t",
+    "description": "This task is obviously about hello goodbye 7 l33t. What more do you need?",
+    "dueDatetime": datetime(2022, 3, 31, 11, 32, 10),
+    "user": {
+        "email": "chawl025@umn.edu",
+        "firstName": "Nikunj",
+        "hasMiddleName": True,
+        "middleName": "",
+        "lastName": "Chawla",
+        "profileUrl": "https://github.com/nik312123"
+    },
+    "color": "#0197F6",
+    "priority": "low",
+    "isCompleted": False
+}
+
+incorrect_task_with_too_long_middle_name = {
+    "id": 1,
+    "title": "Hello Goodbye 7 l33t",
+    "description": "This task is obviously about hello goodbye 7 l33t. What more do you need?",
+    "dueDatetime": datetime(2022, 3, 31, 11, 32, 10),
+    "user": {
+        "email": "chawl025@umn.edu",
+        "firstName": "Nikunj",
+        "hasMiddleName": True,
+        "middleName": "ChanikChanikChanikChanikChanikChanik",
+        "lastName": "Chawla",
+        "profileUrl": "https://github.com/nik312123"
+    },
+    "color": "#0197F6",
+    "priority": "low",
+    "isCompleted": False
+}
+
+incorrect_task_with_malformatted_middle_name = {
+    "id": 1,
+    "title": "Hello Goodbye 7 l33t",
+    "description": "This task is obviously about hello goodbye 7 l33t. What more do you need?",
+    "dueDatetime": datetime(2022, 3, 31, 11, 32, 10),
+    "user": {
+        "email": "chawl025@umn.edu",
+        "firstName": "Nikunj",
+        "hasMiddleName": True,
+        "middleName": "Cha-nik",
+        "lastName": "Chawla",
+        "profileUrl": "https://github.com/nik312123"
+    },
+    "color": "#0197F6",
+    "priority": "low",
+    "isCompleted": False
+}
+
+incorrect_task_with_incorrectly_typed_middle_name = {
+    "id": 1,
+    "title": "Hello Goodbye 7 l33t",
+    "description": "This task is obviously about hello goodbye 7 l33t. What more do you need?",
+    "dueDatetime": datetime(2022, 3, 31, 11, 32, 10),
+    "user": {
+        "email": "chawl025@umn.edu",
+        "firstName": "Nikunj",
+        "hasMiddleName": True,
+        "middleName": 5.3,
+        "lastName": "Chawla",
+        "profileUrl": "https://github.com/nik312123"
+    },
+    "color": "#0197F6",
+    "priority": "low",
+    "isCompleted": False
+}
+
 
 def assert_model_dicts_equal(task_dict: dict, expected_dict: dict) -> None:
     assert task_dict["id"] == expected_dict["id"]
@@ -717,3 +933,213 @@ def test_incorrect_task_with_incorrectly_typed_email_p3() -> None:
     check_incorrect_task_one_error(
         P3TaskModel, incorrect_task_with_incorrectly_typed_email, "value is not a valid email address"
     )
+
+
+def test_incorrect_task_with_empty_first_name_p1() -> None:
+    check_incorrect_task_one_error(
+        P1TaskModel, incorrect_task_with_empty_first_name, "A name part must be between 1 and 30 characters in length."
+    )
+
+
+def test_incorrect_task_with_empty_first_name_p2() -> None:
+    check_incorrect_task_one_error(
+        P2TaskModel, incorrect_task_with_empty_first_name, "A name part must be between 1 and 30 characters in length."
+    )
+
+
+def test_incorrect_task_with_empty_first_name_p3() -> None:
+    check_incorrect_task_one_error(
+        P3TaskModel, incorrect_task_with_empty_first_name, "ensure this value has at least 1 characters"
+    )
+
+
+def test_incorrect_task_with_too_long_first_name_p1() -> None:
+    check_incorrect_task_one_error(
+        P1TaskModel, incorrect_task_with_too_long_first_name,
+        "A name part must be between 1 and 30 characters in length."
+    )
+
+
+def test_incorrect_task_with_too_long_first_name_p2() -> None:
+    check_incorrect_task_one_error(
+        P2TaskModel, incorrect_task_with_too_long_first_name,
+        "A name part must be between 1 and 30 characters in length."
+    )
+
+
+def test_incorrect_task_with_too_long_first_name_p3() -> None:
+    check_incorrect_task_one_error(
+        P3TaskModel, incorrect_task_with_too_long_first_name, "ensure this value has at most 30 characters"
+    )
+
+
+def test_incorrect_task_with_malformatted_first_name_p1() -> None:
+    check_incorrect_task_one_error(
+        P1TaskModel, incorrect_task_with_malformatted_first_name,
+        "A name part may only consist of alphabetical characters."
+    )
+
+
+def test_incorrect_task_with_malformatted_first_name_p2() -> None:
+    check_incorrect_task_one_error(
+        P2TaskModel, incorrect_task_with_malformatted_first_name,
+        "A name part may only consist of alphabetical characters."
+    )
+
+
+def test_incorrect_task_with_malformatted_first_name_p3() -> None:
+    check_incorrect_task_one_error(
+        P3TaskModel, incorrect_task_with_malformatted_first_name,
+        "A name part may only consist of alphabetical characters."
+    )
+
+
+# No such typed test exists for p1 as strict typing is not introduced
+
+
+def test_incorrect_task_with_incorrectly_typed_first_name_p2() -> None:
+    check_incorrect_task_one_error(P2TaskModel, incorrect_task_with_incorrectly_typed_first_name, "str type expected")
+
+
+def test_incorrect_task_with_incorrectly_typed_first_name_p3() -> None:
+    check_incorrect_task_one_error(P3TaskModel, incorrect_task_with_incorrectly_typed_first_name, "str type expected")
+
+
+def test_incorrect_task_with_empty_last_name_p1() -> None:
+    check_incorrect_task_one_error(
+        P1TaskModel, incorrect_task_with_empty_last_name, "A name part must be between 1 and 30 characters in length."
+    )
+
+
+def test_incorrect_task_with_empty_last_name_p2() -> None:
+    check_incorrect_task_one_error(
+        P2TaskModel, incorrect_task_with_empty_last_name, "A name part must be between 1 and 30 characters in length."
+    )
+
+
+def test_incorrect_task_with_empty_last_name_p3() -> None:
+    check_incorrect_task_one_error(
+        P3TaskModel, incorrect_task_with_empty_last_name, "ensure this value has at least 1 characters"
+    )
+
+
+def test_incorrect_task_with_too_long_last_name_p1() -> None:
+    check_incorrect_task_one_error(
+        P1TaskModel, incorrect_task_with_too_long_last_name,
+        "A name part must be between 1 and 30 characters in length."
+    )
+
+
+def test_incorrect_task_with_too_long_last_name_p2() -> None:
+    check_incorrect_task_one_error(
+        P2TaskModel, incorrect_task_with_too_long_last_name,
+        "A name part must be between 1 and 30 characters in length."
+    )
+
+
+def test_incorrect_task_with_too_long_last_name_p3() -> None:
+    check_incorrect_task_one_error(
+        P3TaskModel, incorrect_task_with_too_long_last_name, "ensure this value has at most 30 characters"
+    )
+
+
+def test_incorrect_task_with_malformatted_last_name_p1() -> None:
+    check_incorrect_task_one_error(
+        P1TaskModel, incorrect_task_with_malformatted_last_name,
+        "A name part may only consist of alphabetical characters."
+    )
+
+
+def test_incorrect_task_with_malformatted_last_name_p2() -> None:
+    check_incorrect_task_one_error(
+        P2TaskModel, incorrect_task_with_malformatted_last_name,
+        "A name part may only consist of alphabetical characters."
+    )
+
+
+def test_incorrect_task_with_malformatted_last_name_p3() -> None:
+    check_incorrect_task_one_error(
+        P3TaskModel, incorrect_task_with_malformatted_last_name,
+        "A name part may only consist of alphabetical characters."
+    )
+
+
+# No such typed test exists for p1 as strict typing is not introduced
+
+
+def test_incorrect_task_with_incorrectly_typed_last_name_p2() -> None:
+    check_incorrect_task_one_error(P2TaskModel, incorrect_task_with_incorrectly_typed_last_name, "str type expected")
+
+
+def test_incorrect_task_with_incorrectly_typed_last_name_p3() -> None:
+    check_incorrect_task_one_error(P3TaskModel, incorrect_task_with_incorrectly_typed_last_name, "str type expected")
+
+
+def test_incorrect_task_with_empty_middle_name_p1() -> None:
+    check_incorrect_task_one_error(
+        P1TaskModel, incorrect_task_with_empty_middle_name, "A name part must be between 1 and 30 characters in length."
+    )
+
+
+def test_incorrect_task_with_empty_middle_name_p2() -> None:
+    check_incorrect_task_one_error(
+        P2TaskModel, incorrect_task_with_empty_middle_name, "A name part must be between 1 and 30 characters in length."
+    )
+
+
+def test_incorrect_task_with_empty_middle_name_p3() -> None:
+    check_incorrect_task_one_error(
+        P3TaskModel, incorrect_task_with_empty_middle_name, "ensure this value has at least 1 characters"
+    )
+
+
+def test_incorrect_task_with_too_long_middle_name_p1() -> None:
+    check_incorrect_task_one_error(
+        P1TaskModel, incorrect_task_with_too_long_middle_name,
+        "A name part must be between 1 and 30 characters in length."
+    )
+
+
+def test_incorrect_task_with_too_long_middle_name_p2() -> None:
+    check_incorrect_task_one_error(
+        P2TaskModel, incorrect_task_with_too_long_middle_name,
+        "A name part must be between 1 and 30 characters in length."
+    )
+
+
+def test_incorrect_task_with_too_long_middle_name_p3() -> None:
+    check_incorrect_task_one_error(
+        P3TaskModel, incorrect_task_with_too_long_middle_name, "ensure this value has at most 30 characters"
+    )
+
+
+def test_incorrect_task_with_malformatted_middle_name_p1() -> None:
+    check_incorrect_task_one_error(
+        P1TaskModel, incorrect_task_with_malformatted_middle_name,
+        "A name part may only consist of alphabetical characters."
+    )
+
+
+def test_incorrect_task_with_malformatted_middle_name_p2() -> None:
+    check_incorrect_task_one_error(
+        P2TaskModel, incorrect_task_with_malformatted_middle_name,
+        "A name part may only consist of alphabetical characters."
+    )
+
+
+def test_incorrect_task_with_malformatted_middle_name_p3() -> None:
+    check_incorrect_task_one_error(
+        P3TaskModel, incorrect_task_with_malformatted_middle_name,
+        "A name part may only consist of alphabetical characters."
+    )
+
+
+# No such typed test exists for p1 as strict typing is not introduced
+
+
+def test_incorrect_task_with_incorrectly_typed_middle_name_p2() -> None:
+    check_incorrect_task_one_error(P2TaskModel, incorrect_task_with_incorrectly_typed_middle_name, "str type expected")
+
+
+def test_incorrect_task_with_incorrectly_typed_middle_name_p3() -> None:
+    check_incorrect_task_one_error(P3TaskModel, incorrect_task_with_incorrectly_typed_middle_name, "str type expected")
