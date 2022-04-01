@@ -19,7 +19,7 @@ class TaskModel(BaseModel):
     
     # Underscores prevent fields from being part of the schema parsed by pydantic
     _title_format_regex = re.compile(r"^[a-zA-Z0-9 ]+$")
-    _color_format_regex = re.compile("^[a-zA-Z]{6}$")
+    _color_format_regex = re.compile("^[a-fA-F0-9]{6}$")
     
     @validator("title", "description")
     def strip_spaces(cls, string: str) -> str:
