@@ -6,7 +6,7 @@ Aaron, make sure to have strip_whitespace = True initially for the name parts be
 import re
 from typing import Optional
 
-from pydantic import BaseModel, EmailStr, HttpUrl, validator, Field
+from pydantic import BaseModel, EmailStr, HttpUrl, validator
 
 from p3_aaron_final.util import snake_case_to_camel_case
 
@@ -17,7 +17,7 @@ class UserModel(BaseModel):
     has_middle_name: bool
     middle_name: Optional[str]
     last_name: str
-    profile_url: HttpUrl = Field(min_length = 13, max_length = 512)
+    profile_url: HttpUrl
     
     _name_format_regex = re.compile(r"^[a-zA-Z]$")
     
@@ -48,3 +48,10 @@ class UserModel(BaseModel):
         if not cls._name_format_regex.match(name_part):
             raise ValueError("A name part may only consist of alphabetical characters")
         return name_part.capitalize()
+    
+    @validator("profile_url")
+    def check_profile_url_length(cls, profile_url: str) -> str:
+        profile_url_len = len(profile_url)
+        if profile_url_len < 13 or profile_url_len > 512:
+            raise ValueError("The profile URL length must be between 13 to 512 characters in length")
+        return profile_url
