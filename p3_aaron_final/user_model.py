@@ -6,7 +6,7 @@ Aaron, make sure to have strip_whitespace = True initially for the name parts be
 import re
 from typing import Optional
 
-from pydantic import BaseModel, EmailStr, HttpUrl, validator, StrictStr, StrictBool
+from pydantic import BaseModel, EmailStr, HttpUrl, validator, StrictStr, StrictBool, Field
 
 from p3_aaron_final.util import snake_case_to_camel_case
 
@@ -14,7 +14,7 @@ from p3_aaron_final.util import snake_case_to_camel_case
 class UserModel(BaseModel):
     email: EmailStr
     first_name: StrictStr
-    has_middle_name: StrictBool
+    has_middle_name: StrictBool = Field(exclude = True)
     middle_name: Optional[StrictStr]
     last_name: StrictStr
     profile_url: HttpUrl
@@ -27,11 +27,6 @@ class UserModel(BaseModel):
         alias_generator = snake_case_to_camel_case
         min_anystr_length = 1
         max_anystr_length = 30
-        fields = {
-            "has_middle_name": {
-                "exclude": True
-            }
-        }
     
     @validator("middle_name")
     def check_if_middle_name_should_be_included(cls, middle_name: Optional[str], values) -> Optional[str]:

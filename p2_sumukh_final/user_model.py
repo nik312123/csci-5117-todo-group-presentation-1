@@ -7,7 +7,7 @@ from pydantic import BaseModel, EmailStr, HttpUrl, validator, Field, StrictStr, 
 class UserModel(BaseModel):
     email: EmailStr
     first_name: StrictStr = Field(alias = "firstName")
-    has_middle_name: StrictBool = Field(alias = "hasMiddleName")
+    has_middle_name: StrictBool = Field(alias = "hasMiddleName", exclude = True)
     middle_name: Optional[StrictStr] = Field(alias = "middleName")
     last_name: StrictStr = Field(alias = "lastName")
     profile_url: HttpUrl = Field(alias = "profileUrl")
