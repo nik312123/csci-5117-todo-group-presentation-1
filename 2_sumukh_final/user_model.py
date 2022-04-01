@@ -27,7 +27,9 @@ class UserModel(BaseModel):
         return middle_name
     
     @validator("first_name", "middle_name", "last_name")
-    def check_name_part_format(cls, name_part: str) -> str:
+    def check_name_part_format(cls, name_part: Optional[str]) -> Optional[str]:
+        if name_part is None:
+            return name_part
         if not cls._name_format_regex.match(name_part):
             raise ValueError("A name part may only consist of alphabetical characters")
         return name_part.capitalize()
