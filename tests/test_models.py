@@ -597,70 +597,6 @@ def convert_to_p3_expected_dict(expected_dict: dict) -> None:
     expected_dict["color"] = Color(expected_dict["color"])
 
 
-def test_correct_task_with_no_middle_name_with_field_p1() -> None:
-    task = P1TaskModel(**correct_task_with_no_middle_name_with_field)
-    assert_model_dicts_equal(task.dict(by_alias = True), correct_task_with_no_middle_name_with_field)
-
-
-def test_correct_task_with_no_middle_name_with_field_p2() -> None:
-    task = P2TaskModel(**correct_task_with_no_middle_name_with_field)
-    expected_dict = deepcopy(correct_task_with_no_middle_name_with_field)
-    convert_to_p2_expected_dict(expected_dict)
-    assert_model_dicts_equal(task.dict(by_alias = True), expected_dict)
-
-
-def test_correct_task_with_no_middle_name_with_field_p3() -> None:
-    task = P3TaskModel(**correct_task_with_no_middle_name_with_field)
-    expected_dict = deepcopy(correct_task_with_no_middle_name_with_field)
-    convert_to_p3_expected_dict(expected_dict)
-    assert_model_dicts_equal(task.dict(by_alias = True), expected_dict)
-
-
-def test_correct_task_with_no_middle_name_without_field_p1() -> None:
-    task = P1TaskModel(**correct_task_with_no_middle_name_without_field)
-    expected_dict = deepcopy(correct_task_with_no_middle_name_without_field)
-    # noinspection PyTypeChecker
-    expected_dict["user"]["middleName"] = None
-    assert_model_dicts_equal(task.dict(by_alias = True), expected_dict)
-
-
-def test_correct_task_with_no_middle_name_without_field_p2() -> None:
-    task = P2TaskModel(**correct_task_with_no_middle_name_without_field)
-    expected_dict = deepcopy(correct_task_with_no_middle_name_without_field)
-    # noinspection PyTypeChecker
-    expected_dict["user"]["middleName"] = None
-    convert_to_p2_expected_dict(expected_dict)
-    assert_model_dicts_equal(task.dict(by_alias = True), expected_dict)
-
-
-def test_correct_task_with_no_middle_name_without_field_p3() -> None:
-    task = P3TaskModel(**correct_task_with_no_middle_name_without_field)
-    expected_dict = deepcopy(correct_task_with_no_middle_name_without_field)
-    # noinspection PyTypeChecker
-    expected_dict["user"]["middleName"] = None
-    convert_to_p3_expected_dict(expected_dict)
-    assert_model_dicts_equal(task.dict(by_alias = True), expected_dict)
-
-
-def test_correct_task_with_middle_name_p1() -> None:
-    task = P1TaskModel(**correct_task_with_middle_name)
-    assert_model_dicts_equal(task.dict(by_alias = True), correct_task_with_middle_name)
-
-
-def test_correct_task_with_middle_name_p2() -> None:
-    task = P2TaskModel(**correct_task_with_middle_name)
-    expected_dict = deepcopy(correct_task_with_middle_name)
-    convert_to_p2_expected_dict(expected_dict)
-    assert_model_dicts_equal(task.dict(by_alias = True), expected_dict)
-
-
-def test_correct_task_with_middle_name_p3() -> None:
-    task = P3TaskModel(**correct_task_with_middle_name)
-    expected_dict = deepcopy(correct_task_with_middle_name)
-    convert_to_p3_expected_dict(expected_dict)
-    assert_model_dicts_equal(task.dict(by_alias = True), expected_dict)
-
-
 def check_incorrect_task_one_error(
     task_model_class: Type, input_dict: dict, message: str) -> None:
     with pytest.raises(ValidationError) as e_info:
@@ -1143,3 +1079,68 @@ def test_incorrect_task_with_incorrectly_typed_middle_name_p2() -> None:
 
 def test_incorrect_task_with_incorrectly_typed_middle_name_p3() -> None:
     check_incorrect_task_one_error(P3TaskModel, incorrect_task_with_incorrectly_typed_middle_name, "str type expected")
+
+
+def test_correct_task_with_no_middle_name_with_field_p1() -> None:
+    task = P1TaskModel(**correct_task_with_no_middle_name_with_field)
+    assert_model_dicts_equal(task.dict(by_alias = True), correct_task_with_no_middle_name_with_field)
+
+
+def test_correct_task_with_no_middle_name_with_field_p2() -> None:
+    task = P2TaskModel(**correct_task_with_no_middle_name_with_field)
+    expected_dict = deepcopy(correct_task_with_no_middle_name_with_field)
+    convert_to_p2_expected_dict(expected_dict)
+    assert_model_dicts_equal(task.dict(by_alias = True), expected_dict)
+
+
+def test_correct_task_with_no_middle_name_with_field_p3() -> None:
+    task = P3TaskModel(**correct_task_with_no_middle_name_with_field)
+    expected_dict = deepcopy(correct_task_with_no_middle_name_with_field)
+    convert_to_p3_expected_dict(expected_dict)
+    assert_model_dicts_equal(task.dict(by_alias = True), expected_dict)
+
+
+def test_correct_task_with_no_middle_name_without_field_p1() -> None:
+    task = P1TaskModel(**correct_task_with_no_middle_name_without_field)
+    expected_dict = deepcopy(correct_task_with_no_middle_name_without_field)
+    # noinspection PyTypeChecker
+    expected_dict["user"]["middleName"] = None
+    assert_model_dicts_equal(task.dict(by_alias = True), expected_dict)
+
+
+def test_correct_task_with_no_middle_name_without_field_p2() -> None:
+    task = P2TaskModel(**correct_task_with_no_middle_name_without_field)
+    expected_dict = deepcopy(correct_task_with_no_middle_name_without_field)
+    # noinspection PyTypeChecker
+    expected_dict["user"]["middleName"] = None
+    convert_to_p2_expected_dict(expected_dict)
+    assert_model_dicts_equal(task.dict(by_alias = True), expected_dict)
+
+
+def test_correct_task_with_no_middle_name_without_field_p3() -> None:
+    task = P3TaskModel(**correct_task_with_no_middle_name_without_field)
+    expected_dict = deepcopy(correct_task_with_no_middle_name_without_field)
+    # noinspection PyTypeChecker
+    expected_dict["user"]["middleName"] = None
+    convert_to_p3_expected_dict(expected_dict)
+    assert_model_dicts_equal(task.dict(by_alias = True), expected_dict)
+
+
+def test_correct_task_with_middle_name_p1() -> None:
+    task = P1TaskModel(**correct_task_with_middle_name)
+    assert_model_dicts_equal(task.dict(by_alias = True), correct_task_with_middle_name)
+
+
+def test_correct_task_with_middle_name_p2() -> None:
+    task = P2TaskModel(**correct_task_with_middle_name)
+    expected_dict = deepcopy(correct_task_with_middle_name)
+    convert_to_p2_expected_dict(expected_dict)
+    assert_model_dicts_equal(task.dict(by_alias = True), expected_dict)
+
+
+def test_correct_task_with_middle_name_p3() -> None:
+    task = P3TaskModel(**correct_task_with_middle_name)
+    expected_dict = deepcopy(correct_task_with_middle_name)
+    convert_to_p3_expected_dict(expected_dict)
+    assert_model_dicts_equal(task.dict(by_alias = True), expected_dict)
+
