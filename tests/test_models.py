@@ -1,8 +1,8 @@
+from copy import deepcopy
 from datetime import datetime
 from typing import Type
 
-from copy import deepcopy
-
+import pytest
 from pydantic import ValidationError
 from pydantic.color import Color
 
@@ -285,11 +285,11 @@ def test_correct_task_with_middle_name_p3() -> None:
 
 def check_incorrect_task_one_error(
     task_model_class: Type, input_dict: dict, message: str) -> None:
-    try:
+    with pytest.raises(ValidationError) as e_info:
         task_model_class(**input_dict)
-    except ValidationError as e:
-        assert len(e.errors()) == 1
-        assert e.errors()[0]["msg"] == message
+    e = e_info.value
+    assert len(e.errors()) == 1
+    assert e.errors()[0]["msg"] == message
 
 
 def test_incorrect_task_with_negative_id_p1() -> None:
@@ -321,13 +321,13 @@ def test_incorrect_task_with_zero_id_p3() -> None:
 
 def test_incorrect_task_with_incorrectly_typed_id_p2() -> None:
     check_incorrect_task_one_error(
-        P1TaskModel, incorrect_task_with_incorrectly_typed_id, "value is not a valid integer"
+        P2TaskModel, incorrect_task_with_incorrectly_typed_id, "value is not a valid integer"
     )
 
 
 def test_incorrect_task_with_incorrectly_typed_id_p3() -> None:
     check_incorrect_task_one_error(
-        P2TaskModel, incorrect_task_with_incorrectly_typed_id, "value is not a valid integer"
+        P3TaskModel, incorrect_task_with_incorrectly_typed_id, "value is not a valid integer"
     )
 
 
