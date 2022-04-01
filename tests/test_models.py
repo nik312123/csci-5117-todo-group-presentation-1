@@ -262,6 +262,97 @@ incorrect_task_with_unsupported_datetime_string = {
     "isCompleted": False
 }
 
+incorrect_task_with_empty_email = {
+    "id": 1,
+    "title": "Hello Goodbye 7 l33t",
+    "description": "This task is obviously about hello goodbye 7 l33t. What more do you need?",
+    "dueDatetime": datetime(2022, 3, 31, 11, 32, 10),
+    "user": {
+        "email": "",
+        "firstName": "Nikunj",
+        "hasMiddleName": False,
+        "middleName": None,
+        "lastName": "Chawla",
+        "profileUrl": "https://github.com/nik312123"
+    },
+    "color": "#0197F6",
+    "priority": "low",
+    "isCompleted": False
+}
+
+incorrect_task_with_impossibly_short_email = {
+    "id": 1,
+    "title": "Hello Goodbye 7 l33t",
+    "description": "This task is obviously about hello goodbye 7 l33t. What more do you need?",
+    "dueDatetime": datetime(2022, 3, 31, 11, 32, 10),
+    "user": {
+        "email": "a",
+        "firstName": "Nikunj",
+        "hasMiddleName": False,
+        "middleName": None,
+        "lastName": "Chawla",
+        "profileUrl": "https://github.com/nik312123"
+    },
+    "color": "#0197F6",
+    "priority": "low",
+    "isCompleted": False
+}
+
+incorrect_task_with_too_long_email = {
+    "id": 1,
+    "title": "Hello Goodbye 7 l33t",
+    "description": "This task is obviously about hello goodbye 7 l33t. What more do you need?",
+    "dueDatetime": datetime(2022, 3, 31, 11, 32, 10),
+    "user": {
+        "email": "a" * (254 + 1 - len("@gmail.com")) + "@gmail.com",
+        "firstName": "Nikunj",
+        "hasMiddleName": False,
+        "middleName": None,
+        "lastName": "Chawla",
+        "profileUrl": "https://github.com/nik312123"
+    },
+    "color": "#0197F6",
+    "priority": "low",
+    "isCompleted": False
+}
+
+incorrect_task_with_malformatted_email = {
+    "id": 1,
+    "title": "Hello Goodbye 7 l33t",
+    "description": "This task is obviously about hello goodbye 7 l33t. What more do you need?",
+    "dueDatetime": datetime(2022, 3, 31, 11, 32, 10),
+    "user": {
+        "email": "abcxyz",
+        "firstName": "Nikunj",
+        "hasMiddleName": False,
+        "middleName": None,
+        "lastName": "Chawla",
+        "profileUrl": "https://github.com/nik312123"
+    },
+    "color": "#0197F6",
+    "priority": "low",
+    "isCompleted": False
+}
+
+incorrect_task_with_incorrectly_typed_email = {
+    "id": 1,
+    "title": "Hello Goodbye 7 l33t",
+    "description": "This task is obviously about hello goodbye 7 l33t. What more do you need?",
+    "dueDatetime": datetime(2022, 3, 31, 11, 32, 10),
+    "user": {
+        "email": 132,
+        "firstName": "Nikunj",
+        "hasMiddleName": False,
+        "middleName": None,
+        "lastName": "Chawla",
+        "profileUrl": "https://github.com/nik312123"
+    },
+    "color": "#0197F6",
+    "priority": "low",
+    "isCompleted": False
+}
+
+
 def assert_model_dicts_equal(task_dict: dict, expected_dict: dict) -> None:
     assert task_dict["id"] == expected_dict["id"]
     assert task_dict["title"] == expected_dict["title"]
@@ -539,4 +630,90 @@ def test_incorrect_task_with_unsupported_datetime_string_p2() -> None:
 def test_incorrect_task_with_unsupported_datetime_string_p3() -> None:
     check_incorrect_task_one_error(
         P3TaskModel, incorrect_task_with_unsupported_datetime_string, "invalid datetime format"
+    )
+
+
+def test_incorrect_task_with_empty_email_p1() -> None:
+    check_incorrect_task_one_error(
+        P1TaskModel, incorrect_task_with_empty_email, "The provided email must be in an acceptable format."
+    )
+
+
+def test_incorrect_task_with_empty_email_p2() -> None:
+    check_incorrect_task_one_error(P2TaskModel, incorrect_task_with_empty_email, "value is not a valid email address")
+
+
+def test_incorrect_task_with_empty_email_p3() -> None:
+    check_incorrect_task_one_error(P3TaskModel, incorrect_task_with_empty_email, "value is not a valid email address")
+
+
+def test_incorrect_task_with_impossibly_short_email_p1() -> None:
+    check_incorrect_task_one_error(
+        P1TaskModel, incorrect_task_with_impossibly_short_email, "The provided email must be in an acceptable format."
+    )
+
+
+def test_incorrect_task_with_impossibly_short_email_p2() -> None:
+    check_incorrect_task_one_error(
+        P2TaskModel, incorrect_task_with_impossibly_short_email, "value is not a valid email address"
+    )
+
+
+def test_incorrect_task_with_impossibly_short_email_p3() -> None:
+    check_incorrect_task_one_error(
+        P3TaskModel, incorrect_task_with_impossibly_short_email, "value is not a valid email address"
+    )
+
+
+def test_incorrect_task_with_too_long_email_p1() -> None:
+    check_incorrect_task_one_error(
+        P1TaskModel, incorrect_task_with_too_long_email, "The provided email must be in an acceptable format."
+    )
+
+
+def test_incorrect_task_with_too_long_email_p2() -> None:
+    check_incorrect_task_one_error(
+        P2TaskModel, incorrect_task_with_too_long_email, "value is not a valid email address"
+    )
+
+
+def test_incorrect_task_with_too_long_email_p3() -> None:
+    check_incorrect_task_one_error(
+        P3TaskModel, incorrect_task_with_too_long_email, "value is not a valid email address"
+    )
+
+
+def test_incorrect_task_with_malformatted_email_p1() -> None:
+    check_incorrect_task_one_error(
+        P1TaskModel, incorrect_task_with_malformatted_email, "The provided email must be in an acceptable format."
+    )
+
+
+def test_incorrect_task_with_malformatted_email_p2() -> None:
+    check_incorrect_task_one_error(
+        P2TaskModel, incorrect_task_with_malformatted_email, "value is not a valid email address"
+    )
+
+
+def test_incorrect_task_with_malformatted_email_p3() -> None:
+    check_incorrect_task_one_error(
+        P3TaskModel, incorrect_task_with_malformatted_email, "value is not a valid email address"
+    )
+
+
+def test_incorrect_task_with_incorrectly_typed_email_p1() -> None:
+    check_incorrect_task_one_error(
+        P1TaskModel, incorrect_task_with_incorrectly_typed_email, "The provided email must be in an acceptable format."
+    )
+
+
+def test_incorrect_task_with_incorrectly_typed_email_p2() -> None:
+    check_incorrect_task_one_error(
+        P2TaskModel, incorrect_task_with_incorrectly_typed_email, "value is not a valid email address"
+    )
+
+
+def test_incorrect_task_with_incorrectly_typed_email_p3() -> None:
+    check_incorrect_task_one_error(
+        P3TaskModel, incorrect_task_with_incorrectly_typed_email, "value is not a valid email address"
     )
