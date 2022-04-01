@@ -1,33 +1,19 @@
-"""
-Aaron, don't forget to start with constr implementation before using min_anystr_length and max_anystr_length.
-"""
-
 from typing import Optional
 
-from pydantic import BaseModel, EmailStr, HttpUrl, validator
-
-from util import snake_case_to_camel_case
+from pydantic import BaseModel, EmailStr, HttpUrl, validator, constr
 
 
 class UserModel(BaseModel):
     email: EmailStr
-    first_name: str
+    first_name: constr(min_length = 1, max_length = 30)
     has_middle_name: bool
-    middle_name: Optional[str]
-    last_name: str
+    middle_name: Optional[constr(min_length = 1, max_length = 30)]
+    last_name: constr(min_length = 1, max_length = 30)
     profile_url: Optional[HttpUrl]
     
-    class Config:
-        anystr_strip_whitespace = True
-        allow_mutation = False
-        alias_generator = snake_case_to_camel_case
-        min_anystr_length = 1
-        max_anystr_length = 30
-        fields = {
-            "has_middle_name": {
-                "exclude": True
-            }
-        }
+    @validator("email", "first_name", "middle_name", "last_name", "profile_url")
+    def strip_spaces(cls, string: str) -> str:
+        return string.strip()
     
     @validator("middle_name")
     def check_if_middle_name_should_be_included(cls, middle_name: Optional[str], values) -> Optional[str]:

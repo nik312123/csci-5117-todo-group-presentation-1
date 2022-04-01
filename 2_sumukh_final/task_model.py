@@ -1,10 +1,9 @@
 from datetime import datetime
 from typing import Literal
 
-from pydantic import BaseModel, conint, constr, color
+from pydantic import BaseModel, conint, constr, color, validator
 
 from user_model import UserModel
-from util import snake_case_to_camel_case
 
 
 class TaskModel(BaseModel):
@@ -17,7 +16,6 @@ class TaskModel(BaseModel):
     priority: Literal["low", "medium", "high"]
     is_completed: bool = False
     
-    class Config:
-        anystr_strip_whitespace = True
-        validate_assignment = True
-        alias_generator = snake_case_to_camel_case
+    @validator("title", "description")
+    def strip_spaces(cls, string: str) -> str:
+        return string.strip()
