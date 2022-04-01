@@ -1,3 +1,7 @@
+"""
+Aaron, make sure to have strip_whitespace = True initially for both the title and description before going into config.
+"""
+
 from datetime import datetime
 from typing import Literal
 
@@ -9,8 +13,8 @@ from util import snake_case_to_camel_case
 
 class TaskModel(BaseModel):
     id: conint(gt = 0)
-    title: constr(min_length = 1, max_length = 30, strip_whitespace = True, regex = r"^[a-zA-Z0-9 ]+$")
-    description: constr(max_length = 200, strip_whitespace = True)
+    title: constr(min_length = 1, max_length = 30, regex = r"^[a-zA-Z0-9 ]+$")
+    description: constr(max_length = 200)
     due_datetime: datetime
     user: UserModel
     color: color.Color

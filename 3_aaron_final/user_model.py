@@ -1,5 +1,6 @@
 """
 Aaron, don't forget to start with constr implementation before using min_anystr_length and max_anystr_length.
+Aaron, make sure to have strip_whitespace = True initially for the name parts before going into config.
 """
 
 from typing import Optional
