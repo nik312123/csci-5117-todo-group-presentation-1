@@ -50,8 +50,12 @@ class UserModel(BaseModel):
         return name_part.capitalize()
     
     @validator("profile_url")
-    def check_profile_url_length(cls, profile_url: str) -> str:
+    def check_profile_url_length(cls, profile_url: HttpUrl) -> HttpUrl:
         profile_url_len = len(profile_url)
         if profile_url_len < 13 or profile_url_len > 512:
             raise ValueError("The profile URL length must be between 13 to 512 characters in length")
         return profile_url
+    
+    @validator("profile_url")
+    def set_profile_url_to_string(cls, profile_url: HttpUrl) -> str:
+        return str(profile_url)
