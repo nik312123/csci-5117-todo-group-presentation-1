@@ -1,6 +1,8 @@
 from datetime import datetime
 from typing import Type
 
+from copy import deepcopy
+
 from pydantic import ValidationError
 from pydantic.color import Color
 
@@ -208,9 +210,13 @@ def assert_model_dicts_equal(task_dict: dict, expected_dict: dict) -> None:
     assert task_dict["isCompleted"] == expected_dict["isCompleted"]
 
 
-def convert_to_p3_expected_dict(expected_dict: dict) -> None:
-    expected_dict["color"] = Color(expected_dict["color"])
+def convert_to_p2_expected_dict(expected_dict: dict) -> None:
     expected_dict["user"].pop("hasMiddleName")
+
+
+def convert_to_p3_expected_dict(expected_dict: dict) -> None:
+    convert_to_p2_expected_dict(expected_dict)
+    expected_dict["color"] = Color(expected_dict["color"])
 
 
 def test_correct_task_with_no_middle_name_with_field_p1() -> None:
@@ -220,35 +226,38 @@ def test_correct_task_with_no_middle_name_with_field_p1() -> None:
 
 def test_correct_task_with_no_middle_name_with_field_p2() -> None:
     task = P2TaskModel(**correct_task_with_no_middle_name_with_field)
-    assert_model_dicts_equal(task.dict(by_alias = True), correct_task_with_no_middle_name_with_field)
+    expected_dict = deepcopy(correct_task_with_no_middle_name_with_field)
+    convert_to_p2_expected_dict(expected_dict)
+    assert_model_dicts_equal(task.dict(by_alias = True), expected_dict)
 
 
 def test_correct_task_with_no_middle_name_with_field_p3() -> None:
     task = P3TaskModel(**correct_task_with_no_middle_name_with_field)
-    expected_dict = correct_task_with_no_middle_name_with_field.copy()
+    expected_dict = deepcopy(correct_task_with_no_middle_name_with_field)
     convert_to_p3_expected_dict(expected_dict)
     assert_model_dicts_equal(task.dict(by_alias = True), expected_dict)
 
 
 def test_correct_task_with_no_middle_name_without_field_p1() -> None:
     task = P1TaskModel(**correct_task_with_no_middle_name_without_field)
-    expected_dict = correct_task_with_no_middle_name_without_field.copy()
+    expected_dict = deepcopy(correct_task_with_no_middle_name_without_field)
     # noinspection PyTypeChecker
     expected_dict["user"]["middleName"] = None
-    assert_model_dicts_equal(task.dict(by_alias = True), correct_task_with_no_middle_name_without_field)
+    assert_model_dicts_equal(task.dict(by_alias = True), expected_dict)
 
 
 def test_correct_task_with_no_middle_name_without_field_p2() -> None:
     task = P2TaskModel(**correct_task_with_no_middle_name_without_field)
-    expected_dict = correct_task_with_no_middle_name_without_field.copy()
+    expected_dict = deepcopy(correct_task_with_no_middle_name_without_field)
     # noinspection PyTypeChecker
     expected_dict["user"]["middleName"] = None
-    assert_model_dicts_equal(task.dict(by_alias = True), correct_task_with_no_middle_name_without_field)
+    convert_to_p2_expected_dict(expected_dict)
+    assert_model_dicts_equal(task.dict(by_alias = True), expected_dict)
 
 
 def test_correct_task_with_no_middle_name_without_field_p3() -> None:
     task = P3TaskModel(**correct_task_with_no_middle_name_without_field)
-    expected_dict = correct_task_with_no_middle_name_without_field.copy()
+    expected_dict = deepcopy(correct_task_with_no_middle_name_without_field)
     # noinspection PyTypeChecker
     expected_dict["user"]["middleName"] = None
     convert_to_p3_expected_dict(expected_dict)
@@ -262,12 +271,14 @@ def test_correct_task_with_middle_name_p1() -> None:
 
 def test_correct_task_with_middle_name_p2() -> None:
     task = P2TaskModel(**correct_task_with_middle_name)
-    assert_model_dicts_equal(task.dict(by_alias = True), correct_task_with_middle_name)
+    expected_dict = deepcopy(correct_task_with_middle_name)
+    convert_to_p2_expected_dict(expected_dict)
+    assert_model_dicts_equal(task.dict(by_alias = True), expected_dict)
 
 
 def test_correct_task_with_middle_name_p3() -> None:
     task = P3TaskModel(**correct_task_with_middle_name)
-    expected_dict = correct_task_with_middle_name.copy()
+    expected_dict = deepcopy(correct_task_with_middle_name)
     convert_to_p3_expected_dict(expected_dict)
     assert_model_dicts_equal(task.dict(by_alias = True), expected_dict)
 
