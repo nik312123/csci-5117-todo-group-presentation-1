@@ -568,6 +568,23 @@ incorrect_task_with_incorrectly_typed_middle_name = {
     "isCompleted": False
 }
 
+incorrect_task_with_incorrectly_typed_has_middle_name = {
+    "id": 1,
+    "title": "Hello Goodbye 7 l33t",
+    "description": "This task is obviously about hello goodbye 7 l33t. What more do you need?",
+    "dueDatetime": datetime(2022, 3, 31, 11, 32, 10),
+    "user": {
+        "email": "chawl025@umn.edu",
+        "firstName": "Nikunj",
+        "hasMiddleName": 0,
+        "lastName": "Chawla",
+        "profileUrl": "https://github.com/nik312123"
+    },
+    "color": "#0197F6",
+    "priority": "low",
+    "isCompleted": False
+}
+
 
 def assert_model_dicts_equal(task_dict: dict, expected_dict: dict) -> None:
     assert task_dict["id"] == expected_dict["id"]
@@ -1144,3 +1161,17 @@ def test_correct_task_with_middle_name_p3() -> None:
     convert_to_p3_expected_dict(expected_dict)
     assert_model_dicts_equal(task.dict(by_alias = True), expected_dict)
 
+
+# No such typed test exists for p1 as strict typing is not introduced
+
+
+def test_incorrect_task_with_incorrectly_typed_has_middle_name_p2() -> None:
+    check_incorrect_task_one_error(
+        P2TaskModel, incorrect_task_with_incorrectly_typed_has_middle_name, "value is not a valid boolean"
+    )
+
+
+def test_incorrect_task_with_incorrectly_typed_has_middle_name_p3() -> None:
+    check_incorrect_task_one_error(
+        P3TaskModel, incorrect_task_with_incorrectly_typed_has_middle_name, "value is not a valid boolean"
+    )
