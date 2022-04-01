@@ -2,13 +2,13 @@ import re
 from datetime import datetime
 from typing import Literal
 
-from pydantic import BaseModel, validator, Field
+from pydantic import BaseModel, validator, Field, PositiveInt
 
 from user_model import UserModel
 
 
 class TaskModel(BaseModel):
-    id: int
+    id: PositiveInt
     title: str
     description: str
     due_datetime: datetime = Field(alias = "dueDatetime")
@@ -24,12 +24,6 @@ class TaskModel(BaseModel):
     @validator("title", "description")
     def strip_spaces(cls, string: str) -> str:
         return string.strip()
-    
-    @validator("id")
-    def check_id_is_positive(cls, task_id: int) -> int:
-        if task_id <= 0:
-            raise ValueError("The id must be positive.")
-        return task_id
     
     @validator("title")
     def check_title_length(cls, title: str) -> str:
