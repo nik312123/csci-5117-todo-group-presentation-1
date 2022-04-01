@@ -1,12 +1,12 @@
 from datetime import datetime
+from typing import Type
 
-import pytest
 from pydantic import ValidationError
 from pydantic.color import Color
 
-from p1_siyad_final import task_model as p1_task_model
-from p2_sumukh_final import task_model as p2_task_model
-from p3_aaron_final import task_model as p3_task_model
+from p1_siyad_final.task_model import TaskModel as P1TaskModel
+from p2_sumukh_final.task_model import TaskModel as P2TaskModel
+from p3_aaron_final.task_model import TaskModel as P3TaskModel
 
 correct_task_with_no_middle_name_with_field = {
     "id": 1,
@@ -117,7 +117,7 @@ incorrect_task_with_incorrectly_typed_id = {
 }
 
 incorrect_task_with_empty_title = {
-    "id": 0,
+    "id": 1,
     "title": "",
     "description": "This task is obviously about hello goodbye 7 l33t. What more do you need?",
     "dueDatetime": datetime(2022, 3, 31, 11, 32, 10),
@@ -135,7 +135,7 @@ incorrect_task_with_empty_title = {
 }
 
 incorrect_task_with_too_long_title = {
-    "id": 0,
+    "id": 1,
     "title": "Anna ate an apple and applauded",
     "description": "This task is obviously about hello goodbye 7 l33t. What more do you need?",
     "dueDatetime": datetime(2022, 3, 31, 11, 32, 10),
@@ -153,7 +153,7 @@ incorrect_task_with_too_long_title = {
 }
 
 incorrect_task_with_malformatted_title = {
-    "id": 0,
+    "id": 1,
     "title": "Hello. Goodbye 7 l33t",
     "description": "This task is obviously about hello goodbye 7 l33t. What more do you need?",
     "dueDatetime": datetime(2022, 3, 31, 11, 32, 10),
@@ -171,7 +171,7 @@ incorrect_task_with_malformatted_title = {
 }
 
 incorrect_task_with_incorrectly_typed_title = {
-    "id": 0,
+    "id": 1,
     "title": 9,
     "description": "This task is obviously about hello goodbye 7 l33t. What more do you need?",
     "dueDatetime": datetime(2022, 3, 31, 11, 32, 10),
@@ -214,24 +214,24 @@ def convert_to_p3_expected_dict(expected_dict: dict) -> None:
 
 
 def test_correct_task_with_no_middle_name_with_field_p1() -> None:
-    task = p1_task_model.TaskModel(**correct_task_with_no_middle_name_with_field)
+    task = P1TaskModel(**correct_task_with_no_middle_name_with_field)
     assert_model_dicts_equal(task.dict(by_alias = True), correct_task_with_no_middle_name_with_field)
 
 
 def test_correct_task_with_no_middle_name_with_field_p2() -> None:
-    task = p2_task_model.TaskModel(**correct_task_with_no_middle_name_with_field)
+    task = P2TaskModel(**correct_task_with_no_middle_name_with_field)
     assert_model_dicts_equal(task.dict(by_alias = True), correct_task_with_no_middle_name_with_field)
 
 
 def test_correct_task_with_no_middle_name_with_field_p3() -> None:
-    task = p3_task_model.TaskModel(**correct_task_with_no_middle_name_with_field)
+    task = P3TaskModel(**correct_task_with_no_middle_name_with_field)
     expected_dict = correct_task_with_no_middle_name_with_field.copy()
     convert_to_p3_expected_dict(expected_dict)
     assert_model_dicts_equal(task.dict(by_alias = True), expected_dict)
 
 
 def test_correct_task_with_no_middle_name_without_field_p1() -> None:
-    task = p1_task_model.TaskModel(**correct_task_with_no_middle_name_without_field)
+    task = P1TaskModel(**correct_task_with_no_middle_name_without_field)
     expected_dict = correct_task_with_no_middle_name_without_field.copy()
     # noinspection PyTypeChecker
     expected_dict["user"]["middleName"] = None
@@ -239,7 +239,7 @@ def test_correct_task_with_no_middle_name_without_field_p1() -> None:
 
 
 def test_correct_task_with_no_middle_name_without_field_p2() -> None:
-    task = p2_task_model.TaskModel(**correct_task_with_no_middle_name_without_field)
+    task = P2TaskModel(**correct_task_with_no_middle_name_without_field)
     expected_dict = correct_task_with_no_middle_name_without_field.copy()
     # noinspection PyTypeChecker
     expected_dict["user"]["middleName"] = None
@@ -247,7 +247,7 @@ def test_correct_task_with_no_middle_name_without_field_p2() -> None:
 
 
 def test_correct_task_with_no_middle_name_without_field_p3() -> None:
-    task = p3_task_model.TaskModel(**correct_task_with_no_middle_name_without_field)
+    task = P3TaskModel(**correct_task_with_no_middle_name_without_field)
     expected_dict = correct_task_with_no_middle_name_without_field.copy()
     # noinspection PyTypeChecker
     expected_dict["user"]["middleName"] = None
@@ -256,120 +256,133 @@ def test_correct_task_with_no_middle_name_without_field_p3() -> None:
 
 
 def test_correct_task_with_middle_name_p1() -> None:
-    task = p1_task_model.TaskModel(**correct_task_with_middle_name)
+    task = P1TaskModel(**correct_task_with_middle_name)
     assert_model_dicts_equal(task.dict(by_alias = True), correct_task_with_middle_name)
 
 
 def test_correct_task_with_middle_name_p2() -> None:
-    task = p2_task_model.TaskModel(**correct_task_with_middle_name)
+    task = P2TaskModel(**correct_task_with_middle_name)
     assert_model_dicts_equal(task.dict(by_alias = True), correct_task_with_middle_name)
 
 
 def test_correct_task_with_middle_name_p3() -> None:
-    task = p3_task_model.TaskModel(**correct_task_with_middle_name)
+    task = P3TaskModel(**correct_task_with_middle_name)
     expected_dict = correct_task_with_middle_name.copy()
     convert_to_p3_expected_dict(expected_dict)
     assert_model_dicts_equal(task.dict(by_alias = True), expected_dict)
 
 
+def check_incorrect_task_one_error(
+    task_model_class: Type, input_dict: dict, message: str) -> None:
+    try:
+        task_model_class(**input_dict)
+    except ValidationError as e:
+        assert len(e.errors()) == 1
+        assert e.errors()[0]["msg"] == message
+
+
 def test_incorrect_task_with_negative_id_p1() -> None:
-    with pytest.raises(ValidationError):
-        p1_task_model.TaskModel(**incorrect_task_with_negative_id)
+    check_incorrect_task_one_error(P1TaskModel, incorrect_task_with_negative_id, "The id must be positive.")
 
 
 def test_incorrect_task_with_negative_id_p2() -> None:
-    with pytest.raises(ValidationError):
-        p2_task_model.TaskModel(**incorrect_task_with_negative_id)
+    check_incorrect_task_one_error(P2TaskModel, incorrect_task_with_negative_id, "The id must be positive.")
 
 
 def test_incorrect_task_with_negative_id_p3() -> None:
-    with pytest.raises(ValidationError):
-        p3_task_model.TaskModel(**incorrect_task_with_negative_id)
+    check_incorrect_task_one_error(P3TaskModel, incorrect_task_with_negative_id, "ensure this value is greater than 0")
 
 
 def test_incorrect_task_with_zero_id_p1() -> None:
-    with pytest.raises(ValidationError):
-        p1_task_model.TaskModel(**incorrect_task_with_zero_id)
+    check_incorrect_task_one_error(P1TaskModel, incorrect_task_with_zero_id, "The id must be positive.")
 
 
 def test_incorrect_task_with_zero_id_p2() -> None:
-    with pytest.raises(ValidationError):
-        p2_task_model.TaskModel(**incorrect_task_with_zero_id)
+    check_incorrect_task_one_error(P2TaskModel, incorrect_task_with_zero_id, "The id must be positive.")
 
 
 def test_incorrect_task_with_zero_id_p3() -> None:
-    with pytest.raises(ValidationError):
-        p3_task_model.TaskModel(**incorrect_task_with_zero_id)
+    check_incorrect_task_one_error(P3TaskModel, incorrect_task_with_zero_id, "ensure this value is greater than 0")
 
 
 # No such typed test exists for p1 as strict typing is not introduced
 
 
 def test_incorrect_task_with_incorrectly_typed_id_p2() -> None:
-    with pytest.raises(ValidationError):
-        p2_task_model.TaskModel(**incorrect_task_with_incorrectly_typed_id)
+    check_incorrect_task_one_error(
+        P1TaskModel, incorrect_task_with_incorrectly_typed_id, "value is not a valid integer"
+    )
 
 
 def test_incorrect_task_with_incorrectly_typed_id_p3() -> None:
-    with pytest.raises(ValidationError):
-        p3_task_model.TaskModel(**incorrect_task_with_incorrectly_typed_id)
+    check_incorrect_task_one_error(
+        P2TaskModel, incorrect_task_with_incorrectly_typed_id, "value is not a valid integer"
+    )
 
 
 def test_incorrect_task_with_empty_title_p1() -> None:
-    with pytest.raises(ValidationError):
-        p1_task_model.TaskModel(**incorrect_task_with_empty_title)
+    check_incorrect_task_one_error(
+        P1TaskModel, incorrect_task_with_empty_title, "The title must be between 1 and 30 characters in length."
+    )
 
 
 def test_incorrect_task_with_empty_title_p2() -> None:
-    with pytest.raises(ValidationError):
-        p2_task_model.TaskModel(**incorrect_task_with_empty_title)
+    check_incorrect_task_one_error(
+        P2TaskModel, incorrect_task_with_empty_title, "The title must be between 1 and 30 characters in length."
+    )
 
 
 def test_incorrect_task_with_empty_title_p3() -> None:
-    with pytest.raises(ValidationError):
-        p3_task_model.TaskModel(**incorrect_task_with_empty_title)
+    check_incorrect_task_one_error(
+        P3TaskModel, incorrect_task_with_empty_title, "ensure this value has at least 1 characters"
+    )
 
 
 def test_incorrect_task_with_too_long_title_p1() -> None:
-    with pytest.raises(ValidationError):
-        p1_task_model.TaskModel(**incorrect_task_with_too_long_title)
+    check_incorrect_task_one_error(
+        P1TaskModel, incorrect_task_with_too_long_title, "The title must be between 1 and 30 characters in length."
+    )
 
 
 def test_incorrect_task_with_too_long_title_p2() -> None:
-    with pytest.raises(ValidationError):
-        p2_task_model.TaskModel(**incorrect_task_with_too_long_title)
+    check_incorrect_task_one_error(
+        P2TaskModel, incorrect_task_with_too_long_title, "The title must be between 1 and 30 characters in length."
+    )
 
 
 def test_incorrect_task_with_too_long_title_p3() -> None:
-    with pytest.raises(ValidationError):
-        p3_task_model.TaskModel(**incorrect_task_with_too_long_title)
+    check_incorrect_task_one_error(
+        P3TaskModel, incorrect_task_with_too_long_title, "ensure this value has at most 30 characters"
+    )
 
 
 def test_incorrect_task_with_malformatted_title_p1() -> None:
-    with pytest.raises(ValidationError):
-        p1_task_model.TaskModel(**incorrect_task_with_malformatted_title)
+    check_incorrect_task_one_error(
+        P1TaskModel, incorrect_task_with_malformatted_title,
+        "The title must be composed only of alphanumeric characters and spaces."
+    )
 
 
 def test_incorrect_task_with_malformatted_title_p2() -> None:
-    with pytest.raises(ValidationError):
-        p2_task_model.TaskModel(**incorrect_task_with_malformatted_title)
+    check_incorrect_task_one_error(
+        P2TaskModel, incorrect_task_with_malformatted_title,
+        "The title must be composed only of alphanumeric characters and spaces."
+    )
 
 
 def test_incorrect_task_with_malformatted_title_p3() -> None:
-    with pytest.raises(ValidationError):
-        p3_task_model.TaskModel(**incorrect_task_with_malformatted_title)
+    check_incorrect_task_one_error(
+        P3TaskModel, incorrect_task_with_malformatted_title,
+        "string does not match regex \"^[a-zA-Z0-9 ]+$\""
+    )
 
 
-def test_incorrect_task_with_incorrectly_typed_title_p1() -> None:
-    with pytest.raises(ValidationError):
-        p1_task_model.TaskModel(**incorrect_task_with_incorrectly_typed_title)
+# No such typed test exists for p1 as strict typing is not introduced
 
 
 def test_incorrect_task_with_incorrectly_typed_title_p2() -> None:
-    with pytest.raises(ValidationError):
-        p2_task_model.TaskModel(**incorrect_task_with_incorrectly_typed_title)
+    check_incorrect_task_one_error(P2TaskModel, incorrect_task_with_incorrectly_typed_title, "str type expected")
 
 
 def test_incorrect_task_with_incorrectly_typed_title_p3() -> None:
-    with pytest.raises(ValidationError):
-        p3_task_model.TaskModel(**incorrect_task_with_incorrectly_typed_title)
+    check_incorrect_task_one_error(P3TaskModel, incorrect_task_with_incorrectly_typed_title, "str type expected")
