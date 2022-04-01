@@ -29,14 +29,6 @@ class UserModel(BaseModel):
         except EmailNotValidError:
             raise ValueError("The provided email must be in an acceptable format.")
     
-    @validator("middle_name")
-    def check_if_middle_name_should_be_included(cls, middle_name: Optional[str], values) -> Optional[str]:
-        if values["has_middle_name"] and middle_name is None:
-            raise ValueError("Checkbox picked for middle name but not middle name provided.")
-        elif not values["has_middle_name"] and middle_name is not None:
-            raise ValueError("Checkbox not picked for middle name but middle name provided")
-        return middle_name
-    
     @validator("first_name", "middle_name", "last_name")
     def check_name_part_len(cls, name_part: Optional[str]) -> Optional[str]:
         if name_part is None:
