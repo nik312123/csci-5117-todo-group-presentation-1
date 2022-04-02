@@ -101,24 +101,6 @@ incorrect_task_with_zero_id = {
     "isCompleted": False
 }
 
-incorrect_task_with_incorrectly_typed_id = {
-    "id": True,
-    "title": "Hello Goodbye 7 l33t",
-    "description": "This task is obviously about hello goodbye 7 l33t. What more do you need?",
-    "dueDatetime": datetime(2022, 3, 31, 11, 32, 10),
-    "user": {
-        "email": "chawl025@umn.edu",
-        "firstName": "Nikunj",
-        "hasMiddleName": False,
-        "middleName": None,
-        "lastName": "Chawla",
-        "profileUrl": "https://github.com/nik312123"
-    },
-    "color": "#0197F6",
-    "priority": "low",
-    "isCompleted": False
-}
-
 incorrect_task_with_empty_title = {
     "id": 1,
     "title": "",
@@ -173,46 +155,10 @@ incorrect_task_with_malformatted_title = {
     "isCompleted": False
 }
 
-incorrect_task_with_incorrectly_typed_title = {
-    "id": 1,
-    "title": 9,
-    "description": "This task is obviously about hello goodbye 7 l33t. What more do you need?",
-    "dueDatetime": datetime(2022, 3, 31, 11, 32, 10),
-    "user": {
-        "email": "chawl025@umn.edu",
-        "firstName": "Nikunj",
-        "hasMiddleName": False,
-        "middleName": None,
-        "lastName": "Chawla",
-        "profileUrl": "https://github.com/nik312123"
-    },
-    "color": "#0197F6",
-    "priority": "low",
-    "isCompleted": False
-}
-
 incorrect_task_with_too_long_description = {
     "id": 1,
     "title": "Hello Goodbye 7 l33t",
     "description": "a" * 201,
-    "dueDatetime": datetime(2022, 3, 31, 11, 32, 10),
-    "user": {
-        "email": "chawl025@umn.edu",
-        "firstName": "Nikunj",
-        "hasMiddleName": False,
-        "middleName": None,
-        "lastName": "Chawla",
-        "profileUrl": "https://github.com/nik312123"
-    },
-    "color": "#0197F6",
-    "priority": "low",
-    "isCompleted": False
-}
-
-incorrect_task_with_incorrectly_typed_description = {
-    "id": 1,
-    "title": "Hello Goodbye 7 l33t",
-    "description": 7,
     "dueDatetime": datetime(2022, 3, 31, 11, 32, 10),
     "user": {
         "email": "chawl025@umn.edu",
@@ -335,24 +281,6 @@ incorrect_task_with_malformatted_email = {
     "isCompleted": False
 }
 
-incorrect_task_with_incorrectly_typed_email = {
-    "id": 1,
-    "title": "Hello Goodbye 7 l33t",
-    "description": "This task is obviously about hello goodbye 7 l33t. What more do you need?",
-    "dueDatetime": datetime(2022, 3, 31, 11, 32, 10),
-    "user": {
-        "email": 132,
-        "firstName": "Nikunj",
-        "hasMiddleName": False,
-        "middleName": None,
-        "lastName": "Chawla",
-        "profileUrl": "https://github.com/nik312123"
-    },
-    "color": "#0197F6",
-    "priority": "low",
-    "isCompleted": False
-}
-
 incorrect_task_with_empty_first_name = {
     "id": 1,
     "title": "Hello Goodbye 7 l33t",
@@ -397,24 +325,6 @@ incorrect_task_with_malformatted_first_name = {
     "user": {
         "email": "chawl025@umn.edu",
         "firstName": "Nik'unj",
-        "hasMiddleName": False,
-        "middleName": None,
-        "lastName": "Chawla",
-        "profileUrl": "https://github.com/nik312123"
-    },
-    "color": "#0197F6",
-    "priority": "low",
-    "isCompleted": False
-}
-
-incorrect_task_with_incorrectly_typed_first_name = {
-    "id": 1,
-    "title": "Hello Goodbye 7 l33t",
-    "description": "This task is obviously about hello goodbye 7 l33t. What more do you need?",
-    "dueDatetime": datetime(2022, 3, 31, 11, 32, 10),
-    "user": {
-        "email": "chawl025@umn.edu",
-        "firstName": 987,
         "hasMiddleName": False,
         "middleName": None,
         "lastName": "Chawla",
@@ -479,24 +389,6 @@ incorrect_task_with_malformatted_last_name = {
     "isCompleted": False
 }
 
-incorrect_task_with_incorrectly_typed_last_name = {
-    "id": 1,
-    "title": "Hello Goodbye 7 l33t",
-    "description": "This task is obviously about hello goodbye 7 l33t. What more do you need?",
-    "dueDatetime": datetime(2022, 3, 31, 11, 32, 10),
-    "user": {
-        "email": "chawl025@umn.edu",
-        "firstName": "Nikunj",
-        "hasMiddleName": False,
-        "middleName": None,
-        "lastName": False,
-        "profileUrl": "https://github.com/nik312123"
-    },
-    "color": "#0197F6",
-    "priority": "low",
-    "isCompleted": False
-}
-
 incorrect_task_with_empty_middle_name = {
     "id": 1,
     "title": "Hello Goodbye 7 l33t",
@@ -551,41 +443,6 @@ incorrect_task_with_malformatted_middle_name = {
     "isCompleted": False
 }
 
-incorrect_task_with_incorrectly_typed_middle_name = {
-    "id": 1,
-    "title": "Hello Goodbye 7 l33t",
-    "description": "This task is obviously about hello goodbye 7 l33t. What more do you need?",
-    "dueDatetime": datetime(2022, 3, 31, 11, 32, 10),
-    "user": {
-        "email": "chawl025@umn.edu",
-        "firstName": "Nikunj",
-        "hasMiddleName": True,
-        "middleName": 5.3,
-        "lastName": "Chawla",
-        "profileUrl": "https://github.com/nik312123"
-    },
-    "color": "#0197F6",
-    "priority": "low",
-    "isCompleted": False
-}
-
-incorrect_task_with_incorrectly_typed_has_middle_name = {
-    "id": 1,
-    "title": "Hello Goodbye 7 l33t",
-    "description": "This task is obviously about hello goodbye 7 l33t. What more do you need?",
-    "dueDatetime": datetime(2022, 3, 31, 11, 32, 10),
-    "user": {
-        "email": "chawl025@umn.edu",
-        "firstName": "Nikunj",
-        "hasMiddleName": 0,
-        "lastName": "Chawla",
-        "profileUrl": "https://github.com/nik312123"
-    },
-    "color": "#0197F6",
-    "priority": "low",
-    "isCompleted": False
-}
-
 incorrect_task_with_malformatted_color_strict = {
     "id": 1,
     "title": "Hello Goodbye 7 l33t",
@@ -620,23 +477,6 @@ incorrect_task_with_malformatted_color_all = {
     "isCompleted": False
 }
 
-incorrect_task_with_incorrectly_typed_color = {
-    "id": 1,
-    "title": "Hello Goodbye 7 l33t",
-    "description": "This task is obviously about hello goodbye 7 l33t. What more do you need?",
-    "dueDatetime": datetime(2022, 3, 31, 11, 32, 10),
-    "user": {
-        "email": "chawl025@umn.edu",
-        "firstName": "Nikunj",
-        "hasMiddleName": False,
-        "lastName": "Chawla",
-        "profileUrl": "https://github.com/nik312123"
-    },
-    "color": 1234567,
-    "priority": "low",
-    "isCompleted": False
-}
-
 incorrect_task_with_malformed_priority = {
     "id": 1,
     "title": "Hello Goodbye 7 l33t",
@@ -652,40 +492,6 @@ incorrect_task_with_malformed_priority = {
     "color": "#0197F6",
     "priority": "small",
     "isCompleted": False
-}
-
-incorrect_task_with_incorrectly_typed_priority = {
-    "id": 1,
-    "title": "Hello Goodbye 7 l33t",
-    "description": "This task is obviously about hello goodbye 7 l33t. What more do you need?",
-    "dueDatetime": datetime(2022, 3, 31, 11, 32, 10),
-    "user": {
-        "email": "chawl025@umn.edu",
-        "firstName": "Nikunj",
-        "hasMiddleName": False,
-        "lastName": "Chawla",
-        "profileUrl": "https://github.com/nik312123"
-    },
-    "color": "#0197F6",
-    "priority": 1,
-    "isCompleted": False
-}
-
-incorrect_task_with_incorrectly_typed_is_completed = {
-    "id": 1,
-    "title": "Hello Goodbye 7 l33t",
-    "description": "This task is obviously about hello goodbye 7 l33t. What more do you need?",
-    "dueDatetime": datetime(2022, 3, 31, 11, 32, 10),
-    "user": {
-        "email": "chawl025@umn.edu",
-        "firstName": "Nikunj",
-        "hasMiddleName": False,
-        "lastName": "Chawla",
-        "profileUrl": "https://github.com/nik312123"
-    },
-    "color": "#0197F6",
-    "priority": "low",
-    "isCompleted": "False"
 }
 
 
@@ -763,28 +569,6 @@ def test_incorrect_task_with_zero_id_p3() -> None:
     check_incorrect_task_one_error(P3TaskModel, incorrect_task_with_zero_id, "ensure this value is greater than 0")
 
 
-# No such typed test exists for p1 as strict typing is not introduced
-
-
-def test_incorrect_task_with_incorrectly_typed_id_p0() -> None:
-    check_incorrect_task_p0(
-        incorrect_task_with_incorrectly_typed_id,
-        "Field id was expected to be of type int. Was actually of type bool."
-    )
-
-
-def test_incorrect_task_with_incorrectly_typed_id_p2() -> None:
-    check_incorrect_task_one_error(
-        P2TaskModel, incorrect_task_with_incorrectly_typed_id, "value is not a valid integer"
-    )
-
-
-def test_incorrect_task_with_incorrectly_typed_id_p3() -> None:
-    check_incorrect_task_one_error(
-        P3TaskModel, incorrect_task_with_incorrectly_typed_id, "value is not a valid integer"
-    )
-
-
 def test_incorrect_task_with_empty_title_p0() -> None:
     check_incorrect_task_p0(
         incorrect_task_with_empty_title, "The title must be between 1 and 30 characters in length."
@@ -851,30 +635,6 @@ def test_incorrect_task_with_malformatted_title_p3() -> None:
     )
 
 
-def test_incorrect_task_with_incorrectly_typed_title_p0() -> None:
-    check_incorrect_task_p0(
-        incorrect_task_with_incorrectly_typed_title,
-        "Field title was expected to be of type str. Was actually of type int."
-    )
-
-
-# No such typed test exists for p1 as strict typing is not introduced
-
-
-def test_incorrect_task_with_incorrectly_typed_title_p2() -> None:
-    check_incorrect_task_one_error(P2TaskModel, incorrect_task_with_incorrectly_typed_title, "str type expected")
-
-
-def test_incorrect_task_with_incorrectly_typed_title_p3() -> None:
-    check_incorrect_task_one_error(P3TaskModel, incorrect_task_with_incorrectly_typed_title, "str type expected")
-
-
-def test_incorrect_task_with_too_long_description_p0() -> None:
-    check_incorrect_task_p0(
-        incorrect_task_with_too_long_description, "The description must be at most 200 characters."
-    )
-
-
 # p1 does not have any validators, so there is no length check
 
 
@@ -888,23 +648,6 @@ def test_incorrect_task_with_too_long_description_p3() -> None:
     check_incorrect_task_one_error(
         P3TaskModel, incorrect_task_with_too_long_description, "ensure this value has at most 200 characters"
     )
-
-
-def test_incorrect_task_with_incorrectly_typed_description_p0() -> None:
-    check_incorrect_task_p0(
-        incorrect_task_with_incorrectly_typed_description,
-        "Field description was expected to be of type str. Was actually of type int."
-    )
-
-
-# No such typed test exists for p1 as strict typing is not introduced
-
-def test_incorrect_task_with_incorrectly_typed_description_p2() -> None:
-    check_incorrect_task_one_error(P2TaskModel, incorrect_task_with_incorrectly_typed_description, "str type expected")
-
-
-def test_incorrect_task_with_incorrectly_typed_description_p3() -> None:
-    check_incorrect_task_one_error(P3TaskModel, incorrect_task_with_incorrectly_typed_description, "str type expected")
 
 
 def test_correct_task_with_valid_datetime_string_p0() -> None:
@@ -1047,28 +790,6 @@ def test_incorrect_task_with_malformatted_email_p3() -> None:
     )
 
 
-def test_incorrect_task_with_incorrectly_typed_email_p0() -> None:
-    check_incorrect_task_p0(
-        incorrect_task_with_incorrectly_typed_email,
-        "Field email was expected to be of type str. Was actually of type int."
-    )
-
-
-# No such typed test exists for p1 as strict typing is not introduced
-
-
-def test_incorrect_task_with_incorrectly_typed_email_p2() -> None:
-    check_incorrect_task_one_error(
-        P2TaskModel, incorrect_task_with_incorrectly_typed_email, "value is not a valid email address"
-    )
-
-
-def test_incorrect_task_with_incorrectly_typed_email_p3() -> None:
-    check_incorrect_task_one_error(
-        P3TaskModel, incorrect_task_with_incorrectly_typed_email, "value is not a valid email address"
-    )
-
-
 def test_incorrect_task_with_empty_first_name_p0() -> None:
     check_incorrect_task_p0(
         incorrect_task_with_empty_first_name, "A name part must be between 1 and 30 characters in length."
@@ -1137,30 +858,6 @@ def test_incorrect_task_with_malformatted_first_name_p3() -> None:
     )
 
 
-def test_incorrect_task_with_incorrectly_typed_first_name_p0() -> None:
-    check_incorrect_task_p0(
-        incorrect_task_with_incorrectly_typed_first_name,
-        "Field firstName was expected to be of type str. Was actually of type int."
-    )
-
-
-# No such typed test exists for p1 as strict typing is not introduced
-
-
-def test_incorrect_task_with_incorrectly_typed_first_name_p2() -> None:
-    check_incorrect_task_one_error(P2TaskModel, incorrect_task_with_incorrectly_typed_first_name, "str type expected")
-
-
-def test_incorrect_task_with_incorrectly_typed_first_name_p3() -> None:
-    check_incorrect_task_one_error(P3TaskModel, incorrect_task_with_incorrectly_typed_first_name, "str type expected")
-
-
-def test_incorrect_task_with_empty_last_name_p0() -> None:
-    check_incorrect_task_p0(
-        incorrect_task_with_empty_last_name, "A name part must be between 1 and 30 characters in length."
-    )
-
-
 # p1 does not have any validators, so there is no length check
 
 
@@ -1221,24 +918,6 @@ def test_incorrect_task_with_malformatted_last_name_p3() -> None:
         P3TaskModel, incorrect_task_with_malformatted_last_name,
         "A name part may only consist of alphabetical characters."
     )
-
-
-def test_incorrect_task_with_incorrectly_typed_last_name_p0() -> None:
-    check_incorrect_task_p0(
-        incorrect_task_with_incorrectly_typed_last_name,
-        "Field lastName was expected to be of type str. Was actually of type bool."
-    )
-
-
-# No such typed test exists for p1 as strict typing is not introduced
-
-
-def test_incorrect_task_with_incorrectly_typed_last_name_p2() -> None:
-    check_incorrect_task_one_error(P2TaskModel, incorrect_task_with_incorrectly_typed_last_name, "str type expected")
-
-
-def test_incorrect_task_with_incorrectly_typed_last_name_p3() -> None:
-    check_incorrect_task_one_error(P3TaskModel, incorrect_task_with_incorrectly_typed_last_name, "str type expected")
 
 
 def test_incorrect_task_with_empty_middle_name_p0() -> None:
@@ -1307,24 +986,6 @@ def test_incorrect_task_with_malformatted_middle_name_p3() -> None:
         P3TaskModel, incorrect_task_with_malformatted_middle_name,
         "A name part may only consist of alphabetical characters."
     )
-
-
-def test_incorrect_task_with_incorrectly_typed_middle_name_p0() -> None:
-    check_incorrect_task_p0(
-        incorrect_task_with_incorrectly_typed_middle_name,
-        'Field middleName was expected to be of type Optional[None]. Was actually of type float.'
-    )
-
-
-# No such typed test exists for p1 as strict typing is not introduced
-
-
-def test_incorrect_task_with_incorrectly_typed_middle_name_p2() -> None:
-    check_incorrect_task_one_error(P2TaskModel, incorrect_task_with_incorrectly_typed_middle_name, "str type expected")
-
-
-def test_incorrect_task_with_incorrectly_typed_middle_name_p3() -> None:
-    check_incorrect_task_one_error(P3TaskModel, incorrect_task_with_incorrectly_typed_middle_name, "str type expected")
 
 
 def test_correct_task_with_no_middle_name_with_field_p0() -> None:
@@ -1414,28 +1075,6 @@ def test_correct_task_with_middle_name_p3() -> None:
     assert_model_dicts_equal(task.dict(by_alias = True), expected_dict)
 
 
-def test_incorrect_task_with_incorrectly_typed_has_middle_name_p0() -> None:
-    check_incorrect_task_p0(
-        incorrect_task_with_incorrectly_typed_has_middle_name,
-        "Field hasMiddleName was expected to be of type bool. Was actually of type int."
-    )
-
-
-# No such typed test exists for p1 as strict typing is not introduced
-
-
-def test_incorrect_task_with_incorrectly_typed_has_middle_name_p2() -> None:
-    check_incorrect_task_one_error(
-        P2TaskModel, incorrect_task_with_incorrectly_typed_has_middle_name, "value is not a valid boolean"
-    )
-
-
-def test_incorrect_task_with_incorrectly_typed_has_middle_name_p3() -> None:
-    check_incorrect_task_one_error(
-        P3TaskModel, incorrect_task_with_incorrectly_typed_has_middle_name, "value is not a valid boolean"
-    )
-
-
 def test_incorrect_task_with_malformatted_color_strict_p0() -> None:
     check_incorrect_task_p0(
         incorrect_task_with_malformatted_color_strict,
@@ -1479,30 +1118,6 @@ def test_incorrect_task_with_malformatted_color_all_p3() -> None:
     )
 
 
-def test_incorrect_task_with_incorrectly_typed_color_p0() -> None:
-    check_incorrect_task_p0(
-        incorrect_task_with_malformatted_color_all,
-        "The color should be a valid color hexadecimal string of length 7."
-    )
-
-
-# No such typed test exists for p1 as strict typing is not introduced
-
-
-def test_incorrect_task_with_incorrectly_typed_color_p2() -> None:
-    check_incorrect_task_one_error(
-        P2TaskModel, incorrect_task_with_malformatted_color_all,
-        "The color should be a valid color hexadecimal string of length 7."
-    )
-
-
-def test_incorrect_task_with_incorrectly_typed_color_p3() -> None:
-    check_incorrect_task_one_error(
-        P3TaskModel, incorrect_task_with_malformatted_color_all,
-        "value is not a valid color: string not recognised as a valid color"
-    )
-
-
 def test_incorrect_task_with_malformed_priority_p0() -> None:
     check_incorrect_task_p0(
         incorrect_task_with_malformed_priority,
@@ -1524,54 +1139,4 @@ def test_incorrect_task_with_malformed_priority_p3() -> None:
     check_incorrect_task_one_error(
         P3TaskModel, incorrect_task_with_malformed_priority,
         "unexpected value; permitted: 'low', 'medium', 'high'"
-    )
-
-
-def test_incorrect_task_with_incorrectly_typed_priority_p0() -> None:
-    check_incorrect_task_p0(
-        incorrect_task_with_incorrectly_typed_priority,
-        "Field priority was expected to be of type str. Was actually of type int."
-    )
-
-
-def test_incorrect_task_with_incorrectly_typed_priority_p1() -> None:
-    check_incorrect_task_one_error(
-        P1TaskModel, incorrect_task_with_incorrectly_typed_priority,
-        "unexpected value; permitted: 'low', 'medium', 'high'"
-    )
-
-
-def test_incorrect_task_with_incorrectly_typed_priority_p2() -> None:
-    check_incorrect_task_one_error(
-        P2TaskModel, incorrect_task_with_incorrectly_typed_priority,
-        "unexpected value; permitted: 'low', 'medium', 'high'"
-    )
-
-
-def test_incorrect_task_with_incorrectly_typed_priority_p3() -> None:
-    check_incorrect_task_one_error(
-        P3TaskModel, incorrect_task_with_incorrectly_typed_priority,
-        "unexpected value; permitted: 'low', 'medium', 'high'"
-    )
-
-
-def test_incorrect_task_with_incorrectly_typed_is_completed_p0() -> None:
-    check_incorrect_task_p0(
-        incorrect_task_with_incorrectly_typed_is_completed,
-        "Field isCompleted was expected to be of type bool. Was actually of type str."
-    )
-
-
-# No such typed test exists for p1 as strict typing is not introduced
-
-
-def test_incorrect_task_with_incorrectly_typed_is_completed_p2() -> None:
-    check_incorrect_task_one_error(
-        P2TaskModel, incorrect_task_with_incorrectly_typed_is_completed, "value is not a valid boolean"
-    )
-
-
-def test_incorrect_task_with_incorrectly_typed_is_completed_p3() -> None:
-    check_incorrect_task_one_error(
-        P3TaskModel, incorrect_task_with_incorrectly_typed_is_completed, "value is not a valid boolean"
     )
