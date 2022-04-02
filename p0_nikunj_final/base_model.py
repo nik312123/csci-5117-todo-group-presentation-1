@@ -1,11 +1,11 @@
 import json
 from copy import deepcopy
-from typing import Any, Callable, Optional, Set, Type
+from typing import Any, Callable, Optional, Set, Type, Union
 
 
 class BaseModel:
     
-    def __init__(self, valid_fieldnames: Set[str], data, fields_to_exclude: Set[str] = None):
+    def __init__(self, valid_fieldnames: Set[str], data: Union[dict, str], fields_to_exclude: Set[str] = None):
         if isinstance(data, str):
             try:
                 data = json.loads(data)
