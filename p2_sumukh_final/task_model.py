@@ -27,7 +27,7 @@ class TaskModel(BaseModel):
             raise ValueError("The id must be positive.")
         return task_id
     
-    @validator("title", "description")
+    @validator("title", "description", "color", "priority")
     def strip_spaces(cls, string: str) -> str:
         return string.strip()
     
