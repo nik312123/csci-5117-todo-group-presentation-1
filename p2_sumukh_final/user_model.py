@@ -1,15 +1,15 @@
 import re
 from typing import Optional
 
-from pydantic import BaseModel, EmailStr, HttpUrl, validator, Field, StrictStr, StrictBool
+from pydantic import BaseModel, EmailStr, HttpUrl, validator, Field
 
 
 class UserModel(BaseModel):
     email: EmailStr
-    first_name: StrictStr = Field(alias = "firstName")
-    has_middle_name: StrictBool = Field(alias = "hasMiddleName", exclude = True)
-    middle_name: Optional[StrictStr] = Field(alias = "middleName")
-    last_name: StrictStr = Field(alias = "lastName")
+    first_name: str = Field(alias = "firstName")
+    has_middle_name: bool = Field(alias = "hasMiddleName", exclude = True)
+    middle_name: Optional[str] = Field(alias = "middleName")
+    last_name: str = Field(alias = "lastName")
     profile_url: HttpUrl = Field(alias = "profileUrl")
     
     _name_format_regex = re.compile(r"^[a-zA-Z]*$")
