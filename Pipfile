@@ -18,8 +18,12 @@ werkzeug = "*"
 google-cloud-storage = "*"
 firebase-admin = "*"
 pytest = "*"
+sqlalchemy = "*"
+psycopg2 = "*"
+sqlacodegen = "*"
+flask-sqlalchemy = "*"
 
 [dev-packages]
 
 [requires]
-python_version = "3.9"
+python_version = "3.10"

@@ -1,0 +1,1 @@
+Note: A directory like this should not be uploaded to your repository. It is only uploaded for the sake of example.
